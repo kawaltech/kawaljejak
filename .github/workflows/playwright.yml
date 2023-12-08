@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: End-to-end Tests
 on:
   push:
     branches: [ main, master ]
@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
-      run: pnpm exec playwright test
+      run: pnpm e2e:test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
