@@ -110,19 +110,28 @@ export const createCandidateDetailsExtractor =
       dapil,
     });
 
-    const fields = rows.nth(index + 1).locator("td");
-    await fields.last().getByRole("button").click();
+    // TODO: Move the HTML file location to the build assets
+    const { party, number, name } = candidate;
+    const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
+
+    const action = rows
+      .nth(index + 1)
+      .locator("td")
+      .last();
+    if (await action.getByRole("link").isVisible()) {
+      console.debug(`Candidate's profile is not open, ${filename} is skipped.`);
+      return;
+    }
+
+    await action.getByRole("button").click();
     await expect(
       page.getByRole("heading", { name: "PROFIL CALON" }),
     ).toBeVisible();
 
-    const { party, number, name } = candidate;
     await expect(page.getByRole("cell", { name })).toBeVisible();
 
     const html = await page.locator("[class='card']").innerHTML();
 
-    // TODO: Move the HTML file location to the build assets
-    const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
     console.debug(`Writing candidate HTML profile to ${filename}`);
     await writeHtml(filename, html);
   };

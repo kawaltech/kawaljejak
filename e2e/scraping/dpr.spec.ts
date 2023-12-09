@@ -5,7 +5,7 @@ import {
   createDapilExtractor,
 } from "e2e/utils/extractors";
 import dpr from "../fixtures/dpr.json" assert { type: "json" };
-import ACEH_I from "../fixtures/dpr/1101_ACEH I.json" assert { type: "json" };
+import ACEH_II from "../fixtures/dpr/1102_ACEH II.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
@@ -21,7 +21,7 @@ dpr.forEach((dapil) => {
 });
 
 // TODO: import dapil files dynamically from fixtures/dpr/*.json
-const { candidates } = ACEH_I;
+const { candidates } = ACEH_II;
 
 candidates.forEach((candidate: CandidateDetails, index: number) => {
   test(
