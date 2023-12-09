@@ -75,7 +75,9 @@ export const createDapilExtractor =
     const candidates = await Promise.all(
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
     );
-    console.debug(candidates);
+
+    const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
+    console.debug(`Writing candidates data to ${filename}`);
 
     writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, { candidates });
   };
