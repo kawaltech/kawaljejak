@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
 import {
-  extractCandidateFromRow,
+  extractCandidateDetailsFromRow,
   parseCandidateDetails,
 } from "e2e/utils/extractors";
 import { readFixture, writeFixture, writeHtml } from "e2e/utils/fixtures";
@@ -29,10 +29,12 @@ test("fetch candidates", async ({ page }) => {
 
   const rows = page.locator("tr");
   const allRows = await rows.all();
-  const firstFewRows = allRows.slice(1, 20);
+  // const firstFewRows = allRows.slice(1, 25);
+  // const problematicRow = allRows[26];
+  const allRowsWithoutHeader = allRows.slice(1);
 
   const candidates = await Promise.all(
-    firstFewRows.map(extractCandidateFromRow),
+    allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
   );
   console.debug(candidates);
 

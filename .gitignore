@@ -13,3 +13,4 @@ node_modules
 
 ## Fixtures
 /e2e/fixtures/**/*.html
+/e2e/fixtures/dpr/**/*.json

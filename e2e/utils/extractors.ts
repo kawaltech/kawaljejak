@@ -1,5 +1,5 @@
 import type { Locator } from "@playwright/test";
-import type { Candidate, CandidateDetails } from "e2e/models/candidates";
+import type { CandidateDetails } from "e2e/models/candidates";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -24,19 +24,18 @@ export const parseCandidateDetails = (
   return { party, number, name, gender, address };
 };
 
-export const extractCandidateFromRow = async (
+export const extractCandidateDetailsFromRow = async (
   row: Locator,
-): Promise<Candidate> => {
+): Promise<CandidateDetails> => {
   const cells = row.locator("td");
   const allInnerTexts = await cells.allInnerTexts();
   const candidateDetails = parseCandidateDetails(allInnerTexts);
 
-  const idInput = await cells.last().locator("#id_calon_dpr");
-  const id = idInput ? parseInt(await idInput.inputValue()) : 0;
+  // FIXME: Somehow, the ID is not always available in the table
+  // const idInput = await cells.last().locator("#id_calon_dpr");
+  // const id = idInput ? parseInt(await idInput.inputValue()) : 0;
+  // const candidate: Candidate = { id, ...candidateDetails };
+  // console.debug(candidate);
 
-  const candidate: Candidate = { id, ...candidateDetails };
-
-  console.debug(candidate);
-
-  return candidate;
+  return candidateDetails;
 };
