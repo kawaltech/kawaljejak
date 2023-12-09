@@ -31,7 +31,12 @@ export const extractCandidateFromRow = async (
   const allInnerTexts = await cells.allInnerTexts();
   const candidateDetails = parseCandidateDetails(allInnerTexts);
 
-  const id = parseInt(await cells.last().locator("#id_calon_dpr").inputValue());
+  const idInput = await cells.last().locator("#id_calon_dpr");
+  const id = idInput ? parseInt(await idInput.inputValue()) : 0;
 
-  return { id, ...candidateDetails };
+  const candidate: Candidate = { id, ...candidateDetails };
+
+  console.debug(candidate);
+
+  return candidate;
 };

@@ -4,7 +4,7 @@ import {
   extractCandidateFromRow,
   parseCandidateDetails,
 } from "e2e/utils/extractors";
-import { readFixture, writeHtml } from "e2e/utils/fixtures";
+import { readFixture, writeFixture, writeHtml } from "e2e/utils/fixtures";
 
 test("fetch candidates", async ({ page }) => {
   await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
@@ -28,11 +28,15 @@ test("fetch candidates", async ({ page }) => {
     .waitFor({ state: "hidden", timeout: 60_000 });
 
   const rows = page.locator("tr");
-  // TODO: traverse all rows
+  const allRows = await rows.all();
+  const firstFewRows = allRows.slice(1, 20);
 
-  const candidate = await extractCandidateFromRow(rows.nth(1));
+  const candidates = await Promise.all(
+    firstFewRows.map(extractCandidateFromRow),
+  );
+  console.debug(candidates);
 
-  console.debug(candidate);
+  writeFixture(`dpr/${dapil.id}_${dapil.name}.json`, { candidates });
   // TODO: Store data into a JSON file using writeFixture
   // TODO: Fetch and store images
 });
@@ -73,7 +77,7 @@ test("fetch candidate details", async ({ page }) => {
   const html = await page.locator("[class='card']").innerHTML();
 
   // TODO: Move the HTML file location to the build assets
-  await writeHtml(`dpr/${party}_${number}_${name}.html`, html);
+  await writeHtml(`dpr/${dapil.name}_${party}_${number}_${name}.html`, html);
 
   // TODO: Render the HTML file with custom CSS
 });
