@@ -1,5 +1,7 @@
-import type { Locator } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
+import type { Dapil } from "e2e/models/dapils";
+import { writeFixture } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -39,3 +41,33 @@ export const extractCandidateDetailsFromRow = async (
 
   return candidateDetails;
 };
+
+export const createDapilExtractor =
+  (dapil: Dapil) =>
+  async ({ page }: { page: Page }) => {
+    await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
+
+    await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
+    await expect(
+      page.locator("b").filter({ hasText: "DAFTAR CALON TETAP DPR" }),
+    ).toBeVisible();
+
+    await page.getByRole("textbox", { name: /pilih dapil/i }).click();
+
+    await page.getByRole("option", { name: dapil.name, exact: true }).click();
+
+    await page
+      .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
+      .waitFor({ state: "hidden", timeout: 60_000 });
+
+    const rows = page.locator("tr");
+    const allRows = await rows.all();
+    const allRowsWithoutHeader = allRows.slice(1);
+
+    const candidates = await Promise.all(
+      allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
+    );
+    console.debug(candidates);
+
+    writeFixture(`dpr/${dapil.id}_${dapil.name}.json`, { candidates });
+  };

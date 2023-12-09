@@ -1,47 +1,36 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
 import {
-  extractCandidateDetailsFromRow,
+  createDapilExtractor,
   parseCandidateDetails,
 } from "e2e/utils/extractors";
-import { readFixture, writeFixture, writeHtml } from "e2e/utils/fixtures";
+import { readFixture, writeHtml } from "e2e/utils/fixtures";
 
-test("fetch candidates", async ({ page }) => {
-  await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
+test.describe.configure({ mode: "parallel" });
 
-  await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
-  await expect(
-    page.locator("b").filter({ hasText: "DAFTAR CALON TETAP DPR" }),
-  ).toBeVisible();
+test(
+  "fetch candidates from ACEH I dapil",
+  createDapilExtractor({
+    id: 1101,
+    name: "ACEH I",
+  }),
+);
 
-  await page.getByRole("textbox", { name: /pilih dapil/i }).click();
+test(
+  "fetch candidates from ACEH II dapil",
+  createDapilExtractor({
+    id: 1102,
+    name: "ACEH II",
+  }),
+);
 
-  const dapils = JSON.parse(await readFixture(`dapils.json`)) as Dapils;
-  // TODO: traverse all dapils
-
-  const dapil = dapils.dpr[0];
-
-  await page.getByRole("option", { name: dapil.name, exact: true }).click();
-
-  await page
-    .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
-    .waitFor({ state: "hidden", timeout: 60_000 });
-
-  const rows = page.locator("tr");
-  const allRows = await rows.all();
-  // const firstFewRows = allRows.slice(1, 25);
-  // const problematicRow = allRows[26];
-  const allRowsWithoutHeader = allRows.slice(1);
-
-  const candidates = await Promise.all(
-    allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
-  );
-  console.debug(candidates);
-
-  writeFixture(`dpr/${dapil.id}_${dapil.name}.json`, { candidates });
-  // TODO: Store data into a JSON file using writeFixture
-  // TODO: Fetch and store images
-});
+test(
+  "fetch candidates from SUMATERA UTARA I dapil",
+  createDapilExtractor({
+    id: 1201,
+    name: "SUMATERA UTARA I",
+  }),
+);
 
 test("fetch candidate details", async ({ page }) => {
   await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
