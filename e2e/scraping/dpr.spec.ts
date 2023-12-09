@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
+import { nthExtractor } from "e2e/utils/extractors";
 import { readFixture } from "e2e/utils/fixtures";
 
 test("has title", async ({ page }) => {
@@ -26,14 +27,6 @@ test("has title", async ({ page }) => {
   const rows = page.locator("tr");
   // TODO: traverse all rows
 
-  const headers = rows.first().locator("td");
-  const headerTexts = [];
-  for (let i = 0; i < (await headers.count()); i++) {
-    const textContent = await headers.nth(i).textContent();
-    headerTexts.push(textContent);
-    console.log(i, textContent);
-  }
-
   const fields = rows.nth(1).locator("td");
 
   const textContents = [];
@@ -43,13 +36,13 @@ test("has title", async ({ page }) => {
     console.log(i, textContent);
   }
 
-  const party = await fields.nth(0).textContent();
-  const number = parseInt(
-    (await fields.nth(2).textContent())?.substring(10) ?? "0",
-  );
-  const name = await fields.nth(4).textContent();
-  const gender = await fields.nth(5).textContent();
-  const address = await fields.nth(6).textContent();
+  const fieldExtractor = nthExtractor(fields);
+
+  const party = await fieldExtractor(0);
+  const number = parseInt((await fieldExtractor(2))?.substring(10) ?? "0");
+  const name = await fieldExtractor(4);
+  const gender = await fieldExtractor(5);
+  const address = await fieldExtractor(6);
 
   console.debug({ party, number, name, gender, address });
 });
