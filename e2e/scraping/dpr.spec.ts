@@ -1,15 +1,15 @@
 import { expect, test } from "@playwright/test";
-import type { Dapils } from "e2e/models/dapils";
 import {
   createDapilExtractor,
+  findCandidateRowsForDapil,
   parseCandidateDetails,
 } from "e2e/utils/extractors";
-import { readFixture, writeHtml } from "e2e/utils/fixtures";
-import dapils from "../fixtures/dapils.json" assert { type: "json" };
+import { writeHtml } from "e2e/utils/fixtures";
+import dpr from "../fixtures/dpr.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
-dapils.dpr.forEach((dapil) => {
+dpr.forEach((dapil) => {
   test(
     `fetch DPR candidates from ${dapil.name} dapil`,
     createDapilExtractor({
@@ -21,26 +21,13 @@ dapils.dpr.forEach((dapil) => {
 });
 
 test("fetch candidate details", async ({ page }) => {
-  await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
+  const dapil = dpr[0];
 
-  await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
-  await expect(
-    page.locator("b").filter({ hasText: "DAFTAR CALON TETAP DPR" }),
-  ).toBeVisible();
-
-  await page.getByRole("textbox", { name: /pilih dapil/i }).click();
-
-  const dapils = JSON.parse(await readFixture(`dapils.json`)) as Dapils;
-  const dapil = dapils.dpr[0];
-
-  await page.getByRole("option", { name: dapil.name, exact: true }).click();
-
-  await page
-    .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
-    .waitFor({ state: "hidden", timeout: 60_000 });
-
-  const rows = page.locator("tr");
-  // TODO: traverse all rows
+  const rows = await findCandidateRowsForDapil({
+    page,
+    url: "https://infopemilu.kpu.go.id/Pemilu/Dct_dpr",
+    dapil,
+  });
 
   const fields = rows.nth(1).locator("td");
   const allInnerTexts = await fields.allInnerTexts();
@@ -56,7 +43,10 @@ test("fetch candidate details", async ({ page }) => {
   const html = await page.locator("[class='card']").innerHTML();
 
   // TODO: Move the HTML file location to the build assets
-  await writeHtml(`dpr/${dapil.name}_${party}_${number}_${name}.html`, html);
+  const directory = "dpr";
+  const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
+  console.debug(`Writing candidate HTML profile to ${filename}`);
+  await writeHtml(filename, html);
 
   // TODO: Render the HTML file with custom CSS
 });

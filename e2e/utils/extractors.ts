@@ -42,6 +42,28 @@ export const extractCandidateDetailsFromRow = async (
   return candidateDetails;
 };
 
+export const findCandidateRowsForDapil = async ({
+  page,
+  url,
+  dapil,
+}: {
+  page: Page;
+  url: string;
+  dapil: Dapil;
+}) => {
+  await page.goto(url);
+
+  await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
+  await page.getByRole("textbox", { name: /pilih dapil/i }).click();
+  await page.getByRole("option", { name: dapil.name, exact: true }).click();
+
+  await page
+    .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
+    .waitFor({ state: "hidden", timeout: 60_000 });
+
+  return page.locator("tr");
+};
+
 export const createDapilExtractor =
   ({
     url,
@@ -53,22 +75,7 @@ export const createDapilExtractor =
     directory: string;
   }) =>
   async ({ page }: { page: Page }) => {
-    await page.goto(url);
-
-    await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
-    await expect(
-      page.locator("b").filter({ hasText: "DAFTAR CALON TETAP DPR" }),
-    ).toBeVisible();
-
-    await page.getByRole("textbox", { name: /pilih dapil/i }).click();
-
-    await page.getByRole("option", { name: dapil.name, exact: true }).click();
-
-    await page
-      .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
-      .waitFor({ state: "hidden", timeout: 60_000 });
-
-    const rows = page.locator("tr");
+    const rows = await findCandidateRowsForDapil({ page, url, dapil });
     const allRows = await rows.all();
     const allRowsWithoutHeader = allRows.slice(1);
 

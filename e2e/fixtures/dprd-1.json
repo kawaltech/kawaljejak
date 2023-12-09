@@ -1,0 +1,1206 @@
+[
+  {
+    "id": "110001",
+    "text": "ACEH 1"
+  },
+  {
+    "id": "110002",
+    "text": "ACEH 2"
+  },
+  {
+    "id": "110003",
+    "text": "ACEH 3"
+  },
+  {
+    "id": "110004",
+    "text": "ACEH 4"
+  },
+  {
+    "id": "110005",
+    "text": "ACEH 5"
+  },
+  {
+    "id": "110006",
+    "text": "ACEH 6"
+  },
+  {
+    "id": "110007",
+    "text": "ACEH 7"
+  },
+  {
+    "id": "110008",
+    "text": "ACEH 8"
+  },
+  {
+    "id": "110009",
+    "text": "ACEH 9"
+  },
+  {
+    "id": "110010",
+    "text": "ACEH 10"
+  },
+  {
+    "id": "120001",
+    "text": "SUMATERA UTARA 1"
+  },
+  {
+    "id": "120002",
+    "text": "SUMATERA UTARA 2"
+  },
+  {
+    "id": "120003",
+    "text": "SUMATERA UTARA 3"
+  },
+  {
+    "id": "120004",
+    "text": "SUMATERA UTARA 4"
+  },
+  {
+    "id": "120005",
+    "text": "SUMATERA UTARA 5"
+  },
+  {
+    "id": "120006",
+    "text": "SUMATERA UTARA 6"
+  },
+  {
+    "id": "120007",
+    "text": "SUMATERA UTARA 7"
+  },
+  {
+    "id": "120008",
+    "text": "SUMATERA UTARA 8"
+  },
+  {
+    "id": "120009",
+    "text": "SUMATERA UTARA 9"
+  },
+  {
+    "id": "120010",
+    "text": "SUMATERA UTARA 10"
+  },
+  {
+    "id": "120011",
+    "text": "SUMATERA UTARA 11"
+  },
+  {
+    "id": "120012",
+    "text": "SUMATERA UTARA 12"
+  },
+  {
+    "id": "130001",
+    "text": "SUMATERA BARAT 1"
+  },
+  {
+    "id": "130002",
+    "text": "SUMATERA BARAT 2"
+  },
+  {
+    "id": "130003",
+    "text": "SUMATERA BARAT 3"
+  },
+  {
+    "id": "130004",
+    "text": "SUMATERA BARAT 4"
+  },
+  {
+    "id": "130005",
+    "text": "SUMATERA BARAT 5"
+  },
+  {
+    "id": "130006",
+    "text": "SUMATERA BARAT 6"
+  },
+  {
+    "id": "130007",
+    "text": "SUMATERA BARAT 7"
+  },
+  {
+    "id": "130008",
+    "text": "SUMATERA BARAT 8"
+  },
+  {
+    "id": "140001",
+    "text": "RIAU 1"
+  },
+  {
+    "id": "140002",
+    "text": "RIAU 2"
+  },
+  {
+    "id": "140003",
+    "text": "RIAU 3"
+  },
+  {
+    "id": "140004",
+    "text": "RIAU 4"
+  },
+  {
+    "id": "140005",
+    "text": "RIAU 5"
+  },
+  {
+    "id": "140006",
+    "text": "RIAU 6"
+  },
+  {
+    "id": "140007",
+    "text": "RIAU 7"
+  },
+  {
+    "id": "140008",
+    "text": "RIAU 8"
+  },
+  {
+    "id": "150001",
+    "text": "JAMBI 1"
+  },
+  {
+    "id": "150002",
+    "text": "JAMBI 2"
+  },
+  {
+    "id": "150003",
+    "text": "JAMBI 3"
+  },
+  {
+    "id": "150004",
+    "text": "JAMBI 4"
+  },
+  {
+    "id": "150005",
+    "text": "JAMBI 5"
+  },
+  {
+    "id": "150006",
+    "text": "JAMBI 6"
+  },
+  {
+    "id": "160001",
+    "text": "SUMATERA SELATAN 1"
+  },
+  {
+    "id": "160002",
+    "text": "SUMATERA SELATAN 2"
+  },
+  {
+    "id": "160003",
+    "text": "SUMATERA SELATAN 3"
+  },
+  {
+    "id": "160004",
+    "text": "SUMATERA SELATAN 4"
+  },
+  {
+    "id": "160005",
+    "text": "SUMATERA SELATAN 5"
+  },
+  {
+    "id": "160006",
+    "text": "SUMATERA SELATAN 6"
+  },
+  {
+    "id": "160007",
+    "text": "SUMATERA SELATAN 7"
+  },
+  {
+    "id": "160008",
+    "text": "SUMATERA SELATAN 8"
+  },
+  {
+    "id": "160009",
+    "text": "SUMATERA SELATAN 9"
+  },
+  {
+    "id": "160010",
+    "text": "SUMATERA SELATAN 10"
+  },
+  {
+    "id": "170001",
+    "text": "BENGKULU 1"
+  },
+  {
+    "id": "170002",
+    "text": "BENGKULU 2"
+  },
+  {
+    "id": "170003",
+    "text": "BENGKULU 3"
+  },
+  {
+    "id": "170004",
+    "text": "BENGKULU 4"
+  },
+  {
+    "id": "170005",
+    "text": "BENGKULU 5"
+  },
+  {
+    "id": "170006",
+    "text": "BENGKULU 6"
+  },
+  {
+    "id": "170007",
+    "text": "BENGKULU 7"
+  },
+  {
+    "id": "180001",
+    "text": "LAMPUNG 1"
+  },
+  {
+    "id": "180002",
+    "text": "LAMPUNG 2"
+  },
+  {
+    "id": "180003",
+    "text": "LAMPUNG 3"
+  },
+  {
+    "id": "180004",
+    "text": "LAMPUNG 4"
+  },
+  {
+    "id": "180005",
+    "text": "LAMPUNG 5"
+  },
+  {
+    "id": "180006",
+    "text": "LAMPUNG 6"
+  },
+  {
+    "id": "180007",
+    "text": "LAMPUNG 7"
+  },
+  {
+    "id": "180008",
+    "text": "LAMPUNG 8"
+  },
+  {
+    "id": "190001",
+    "text": "KEPULAUAN BANGKA BELITUNG 1"
+  },
+  {
+    "id": "190002",
+    "text": "KEPULAUAN BANGKA BELITUNG 2"
+  },
+  {
+    "id": "190003",
+    "text": "KEPULAUAN BANGKA BELITUNG 3"
+  },
+  {
+    "id": "190004",
+    "text": "KEPULAUAN BANGKA BELITUNG 4"
+  },
+  {
+    "id": "190005",
+    "text": "KEPULAUAN BANGKA BELITUNG 5"
+  },
+  {
+    "id": "190006",
+    "text": "KEPULAUAN BANGKA BELITUNG 6"
+  },
+  {
+    "id": "210001",
+    "text": "KEPULAUAN RIAU 1"
+  },
+  {
+    "id": "210002",
+    "text": "KEPULAUAN RIAU 2"
+  },
+  {
+    "id": "210003",
+    "text": "KEPULAUAN RIAU 3"
+  },
+  {
+    "id": "210004",
+    "text": "KEPULAUAN RIAU 4"
+  },
+  {
+    "id": "210005",
+    "text": "KEPULAUAN RIAU 5"
+  },
+  {
+    "id": "210006",
+    "text": "KEPULAUAN RIAU 6"
+  },
+  {
+    "id": "210007",
+    "text": "KEPULAUAN RIAU 7"
+  },
+  {
+    "id": "310001",
+    "text": "DKI JAKARTA 1"
+  },
+  {
+    "id": "310002",
+    "text": "DKI JAKARTA 2"
+  },
+  {
+    "id": "310003",
+    "text": "DKI JAKARTA 3"
+  },
+  {
+    "id": "310004",
+    "text": "DKI JAKARTA 4"
+  },
+  {
+    "id": "310005",
+    "text": "DKI JAKARTA 5"
+  },
+  {
+    "id": "310006",
+    "text": "DKI JAKARTA 6"
+  },
+  {
+    "id": "310007",
+    "text": "DKI JAKARTA 7"
+  },
+  {
+    "id": "310008",
+    "text": "DKI JAKARTA 8"
+  },
+  {
+    "id": "310009",
+    "text": "DKI JAKARTA 9"
+  },
+  {
+    "id": "310010",
+    "text": "DKI JAKARTA 10"
+  },
+  {
+    "id": "320001",
+    "text": "JAWA BARAT 1"
+  },
+  {
+    "id": "320002",
+    "text": "JAWA BARAT 2"
+  },
+  {
+    "id": "320003",
+    "text": "JAWA BARAT 3"
+  },
+  {
+    "id": "320004",
+    "text": "JAWA BARAT 4"
+  },
+  {
+    "id": "320005",
+    "text": "JAWA BARAT 5"
+  },
+  {
+    "id": "320006",
+    "text": "JAWA BARAT 6"
+  },
+  {
+    "id": "320007",
+    "text": "JAWA BARAT 7"
+  },
+  {
+    "id": "320008",
+    "text": "JAWA BARAT 8"
+  },
+  {
+    "id": "320009",
+    "text": "JAWA BARAT 9"
+  },
+  {
+    "id": "320010",
+    "text": "JAWA BARAT 10"
+  },
+  {
+    "id": "320011",
+    "text": "JAWA BARAT 11"
+  },
+  {
+    "id": "320012",
+    "text": "JAWA BARAT 12"
+  },
+  {
+    "id": "320013",
+    "text": "JAWA BARAT 13"
+  },
+  {
+    "id": "320014",
+    "text": "JAWA BARAT 14"
+  },
+  {
+    "id": "320015",
+    "text": "JAWA BARAT 15"
+  },
+  {
+    "id": "330001",
+    "text": "JAWA TENGAH 1"
+  },
+  {
+    "id": "330002",
+    "text": "JAWA TENGAH 2"
+  },
+  {
+    "id": "330003",
+    "text": "JAWA TENGAH 3"
+  },
+  {
+    "id": "330004",
+    "text": "JAWA TENGAH 4"
+  },
+  {
+    "id": "330005",
+    "text": "JAWA TENGAH 5"
+  },
+  {
+    "id": "330006",
+    "text": "JAWA TENGAH 6"
+  },
+  {
+    "id": "330007",
+    "text": "JAWA TENGAH 7"
+  },
+  {
+    "id": "330008",
+    "text": "JAWA TENGAH 8"
+  },
+  {
+    "id": "330009",
+    "text": "JAWA TENGAH 9"
+  },
+  {
+    "id": "330010",
+    "text": "JAWA TENGAH 10"
+  },
+  {
+    "id": "330011",
+    "text": "JAWA TENGAH 11"
+  },
+  {
+    "id": "330012",
+    "text": "JAWA TENGAH 12"
+  },
+  {
+    "id": "330013",
+    "text": "JAWA TENGAH 13"
+  },
+  {
+    "id": "340001",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 1"
+  },
+  {
+    "id": "340002",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 2"
+  },
+  {
+    "id": "340003",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 3"
+  },
+  {
+    "id": "340004",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 4"
+  },
+  {
+    "id": "340005",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 5"
+  },
+  {
+    "id": "340006",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 6"
+  },
+  {
+    "id": "340007",
+    "text": "DAERAH ISTIMEWA YOGYAKARTA 7"
+  },
+  {
+    "id": "350001",
+    "text": "JAWA TIMUR 1"
+  },
+  {
+    "id": "350002",
+    "text": "JAWA TIMUR 2"
+  },
+  {
+    "id": "350003",
+    "text": "JAWA TIMUR 3"
+  },
+  {
+    "id": "350004",
+    "text": "JAWA TIMUR 4"
+  },
+  {
+    "id": "350005",
+    "text": "JAWA TIMUR 5"
+  },
+  {
+    "id": "350006",
+    "text": "JAWA TIMUR 6"
+  },
+  {
+    "id": "350007",
+    "text": "JAWA TIMUR 7"
+  },
+  {
+    "id": "350008",
+    "text": "JAWA TIMUR 8"
+  },
+  {
+    "id": "350009",
+    "text": "JAWA TIMUR 9"
+  },
+  {
+    "id": "350010",
+    "text": "JAWA TIMUR 10"
+  },
+  {
+    "id": "350011",
+    "text": "JAWA TIMUR 11"
+  },
+  {
+    "id": "350012",
+    "text": "JAWA TIMUR 12"
+  },
+  {
+    "id": "350013",
+    "text": "JAWA TIMUR 13"
+  },
+  {
+    "id": "350014",
+    "text": "JAWA TIMUR 14"
+  },
+  {
+    "id": "360001",
+    "text": "BANTEN 1"
+  },
+  {
+    "id": "360002",
+    "text": "BANTEN 2"
+  },
+  {
+    "id": "360003",
+    "text": "BANTEN 3"
+  },
+  {
+    "id": "360004",
+    "text": "BANTEN 4"
+  },
+  {
+    "id": "360005",
+    "text": "BANTEN 5"
+  },
+  {
+    "id": "360006",
+    "text": "BANTEN 6"
+  },
+  {
+    "id": "360007",
+    "text": "BANTEN 7"
+  },
+  {
+    "id": "360008",
+    "text": "BANTEN 8"
+  },
+  {
+    "id": "360009",
+    "text": "BANTEN 9"
+  },
+  {
+    "id": "360010",
+    "text": "BANTEN 10"
+  },
+  {
+    "id": "360011",
+    "text": "BANTEN 11"
+  },
+  {
+    "id": "360012",
+    "text": "BANTEN 12"
+  },
+  {
+    "id": "510001",
+    "text": "BALI 1"
+  },
+  {
+    "id": "510002",
+    "text": "BALI 2"
+  },
+  {
+    "id": "510003",
+    "text": "BALI 3"
+  },
+  {
+    "id": "510004",
+    "text": "BALI 4"
+  },
+  {
+    "id": "510005",
+    "text": "BALI 5"
+  },
+  {
+    "id": "510006",
+    "text": "BALI 6"
+  },
+  {
+    "id": "510007",
+    "text": "BALI 7"
+  },
+  {
+    "id": "510008",
+    "text": "BALI 8"
+  },
+  {
+    "id": "510009",
+    "text": "BALI 9"
+  },
+  {
+    "id": "520001",
+    "text": "NUSA TENGGARA BARAT 1"
+  },
+  {
+    "id": "520002",
+    "text": "NUSA TENGGARA BARAT 2"
+  },
+  {
+    "id": "520003",
+    "text": "NUSA TENGGARA BARAT 3"
+  },
+  {
+    "id": "520004",
+    "text": "NUSA TENGGARA BARAT 4"
+  },
+  {
+    "id": "520005",
+    "text": "NUSA TENGGARA BARAT 5"
+  },
+  {
+    "id": "520006",
+    "text": "NUSA TENGGARA BARAT 6"
+  },
+  {
+    "id": "520007",
+    "text": "NUSA TENGGARA BARAT 7"
+  },
+  {
+    "id": "520008",
+    "text": "NUSA TENGGARA BARAT 8"
+  },
+  {
+    "id": "530001",
+    "text": "NUSA TENGGARA TIMUR 1"
+  },
+  {
+    "id": "530002",
+    "text": "NUSA TENGGARA TIMUR 2"
+  },
+  {
+    "id": "530003",
+    "text": "NUSA TENGGARA TIMUR 3"
+  },
+  {
+    "id": "530004",
+    "text": "NUSA TENGGARA TIMUR 4"
+  },
+  {
+    "id": "530005",
+    "text": "NUSA TENGGARA TIMUR 5"
+  },
+  {
+    "id": "530006",
+    "text": "NUSA TENGGARA TIMUR 6"
+  },
+  {
+    "id": "530007",
+    "text": "NUSA TENGGARA TIMUR 7"
+  },
+  {
+    "id": "530008",
+    "text": "NUSA TENGGARA TIMUR 8"
+  },
+  {
+    "id": "610001",
+    "text": "KALIMANTAN BARAT 1"
+  },
+  {
+    "id": "610002",
+    "text": "KALIMANTAN BARAT 2"
+  },
+  {
+    "id": "610003",
+    "text": "KALIMANTAN BARAT 3"
+  },
+  {
+    "id": "610004",
+    "text": "KALIMANTAN BARAT 4"
+  },
+  {
+    "id": "610005",
+    "text": "KALIMANTAN BARAT 5"
+  },
+  {
+    "id": "610006",
+    "text": "KALIMANTAN BARAT 6"
+  },
+  {
+    "id": "610007",
+    "text": "KALIMANTAN BARAT 7"
+  },
+  {
+    "id": "610008",
+    "text": "KALIMANTAN BARAT 8"
+  },
+  {
+    "id": "620001",
+    "text": "KALIMANTAN TENGAH 1"
+  },
+  {
+    "id": "620002",
+    "text": "KALIMANTAN TENGAH 2"
+  },
+  {
+    "id": "620003",
+    "text": "KALIMANTAN TENGAH 3"
+  },
+  {
+    "id": "620004",
+    "text": "KALIMANTAN TENGAH 4"
+  },
+  {
+    "id": "620005",
+    "text": "KALIMANTAN TENGAH 5"
+  },
+  {
+    "id": "630001",
+    "text": "KALIMANTAN SELATAN 1"
+  },
+  {
+    "id": "630002",
+    "text": "KALIMANTAN SELATAN 2"
+  },
+  {
+    "id": "630003",
+    "text": "KALIMANTAN SELATAN 3"
+  },
+  {
+    "id": "630004",
+    "text": "KALIMANTAN SELATAN 4"
+  },
+  {
+    "id": "630005",
+    "text": "KALIMANTAN SELATAN 5"
+  },
+  {
+    "id": "630006",
+    "text": "KALIMANTAN SELATAN 6"
+  },
+  {
+    "id": "630007",
+    "text": "KALIMANTAN SELATAN 7"
+  },
+  {
+    "id": "640001",
+    "text": "KALIMANTAN TIMUR 1"
+  },
+  {
+    "id": "640002",
+    "text": "KALIMANTAN TIMUR 2"
+  },
+  {
+    "id": "640003",
+    "text": "KALIMANTAN TIMUR 3"
+  },
+  {
+    "id": "640004",
+    "text": "KALIMANTAN TIMUR 4"
+  },
+  {
+    "id": "640005",
+    "text": "KALIMANTAN TIMUR 5"
+  },
+  {
+    "id": "640006",
+    "text": "KALIMANTAN TIMUR 6"
+  },
+  {
+    "id": "650001",
+    "text": "KALIMANTAN UTARA 1"
+  },
+  {
+    "id": "650002",
+    "text": "KALIMANTAN UTARA 2"
+  },
+  {
+    "id": "650003",
+    "text": "KALIMANTAN UTARA 3"
+  },
+  {
+    "id": "650004",
+    "text": "KALIMANTAN UTARA 4"
+  },
+  {
+    "id": "710001",
+    "text": "SULAWESI UTARA 1"
+  },
+  {
+    "id": "710002",
+    "text": "SULAWESI UTARA 2"
+  },
+  {
+    "id": "710003",
+    "text": "SULAWESI UTARA 3"
+  },
+  {
+    "id": "710004",
+    "text": "SULAWESI UTARA 4"
+  },
+  {
+    "id": "710005",
+    "text": "SULAWESI UTARA 5"
+  },
+  {
+    "id": "710006",
+    "text": "SULAWESI UTARA 6"
+  },
+  {
+    "id": "720001",
+    "text": "SULAWESI TENGAH 1"
+  },
+  {
+    "id": "720002",
+    "text": "SULAWESI TENGAH 2"
+  },
+  {
+    "id": "720003",
+    "text": "SULAWESI TENGAH 3"
+  },
+  {
+    "id": "720004",
+    "text": "SULAWESI TENGAH 4"
+  },
+  {
+    "id": "720005",
+    "text": "SULAWESI TENGAH 5"
+  },
+  {
+    "id": "720006",
+    "text": "SULAWESI TENGAH 6"
+  },
+  {
+    "id": "720007",
+    "text": "SULAWESI TENGAH 7"
+  },
+  {
+    "id": "730001",
+    "text": "SULAWESI SELATAN 1"
+  },
+  {
+    "id": "730002",
+    "text": "SULAWESI SELATAN 2"
+  },
+  {
+    "id": "730003",
+    "text": "SULAWESI SELATAN 3"
+  },
+  {
+    "id": "730004",
+    "text": "SULAWESI SELATAN 4"
+  },
+  {
+    "id": "730005",
+    "text": "SULAWESI SELATAN 5"
+  },
+  {
+    "id": "730006",
+    "text": "SULAWESI SELATAN 6"
+  },
+  {
+    "id": "730007",
+    "text": "SULAWESI SELATAN 7"
+  },
+  {
+    "id": "730008",
+    "text": "SULAWESI SELATAN 8"
+  },
+  {
+    "id": "730009",
+    "text": "SULAWESI SELATAN 9"
+  },
+  {
+    "id": "730010",
+    "text": "SULAWESI SELATAN 10"
+  },
+  {
+    "id": "730011",
+    "text": "SULAWESI SELATAN 11"
+  },
+  {
+    "id": "740001",
+    "text": "SULAWESI TENGGARA 1"
+  },
+  {
+    "id": "740002",
+    "text": "SULAWESI TENGGARA 2"
+  },
+  {
+    "id": "740003",
+    "text": "SULAWESI TENGGARA 3"
+  },
+  {
+    "id": "740004",
+    "text": "SULAWESI TENGGARA 4"
+  },
+  {
+    "id": "740005",
+    "text": "SULAWESI TENGGARA 5"
+  },
+  {
+    "id": "740006",
+    "text": "SULAWESI TENGGARA 6"
+  },
+  {
+    "id": "750001",
+    "text": "GORONTALO 1"
+  },
+  {
+    "id": "750002",
+    "text": "GORONTALO 2"
+  },
+  {
+    "id": "750003",
+    "text": "GORONTALO 3"
+  },
+  {
+    "id": "750004",
+    "text": "GORONTALO 4"
+  },
+  {
+    "id": "750005",
+    "text": "GORONTALO 5"
+  },
+  {
+    "id": "750006",
+    "text": "GORONTALO 6"
+  },
+  {
+    "id": "760001",
+    "text": "SULAWESI BARAT 1"
+  },
+  {
+    "id": "760002",
+    "text": "SULAWESI BARAT 2"
+  },
+  {
+    "id": "760003",
+    "text": "SULAWESI BARAT 3"
+  },
+  {
+    "id": "760004",
+    "text": "SULAWESI BARAT 4"
+  },
+  {
+    "id": "760005",
+    "text": "SULAWESI BARAT 5"
+  },
+  {
+    "id": "760006",
+    "text": "SULAWESI BARAT 6"
+  },
+  {
+    "id": "760007",
+    "text": "SULAWESI BARAT 7"
+  },
+  {
+    "id": "810001",
+    "text": "MALUKU 1"
+  },
+  {
+    "id": "810002",
+    "text": "MALUKU 2"
+  },
+  {
+    "id": "810003",
+    "text": "MALUKU 3"
+  },
+  {
+    "id": "810004",
+    "text": "MALUKU 4"
+  },
+  {
+    "id": "810005",
+    "text": "MALUKU 5"
+  },
+  {
+    "id": "810006",
+    "text": "MALUKU 6"
+  },
+  {
+    "id": "810007",
+    "text": "MALUKU 7"
+  },
+  {
+    "id": "820001",
+    "text": "MALUKU UTARA 1"
+  },
+  {
+    "id": "820002",
+    "text": "MALUKU UTARA 2"
+  },
+  {
+    "id": "820003",
+    "text": "MALUKU UTARA 3"
+  },
+  {
+    "id": "820004",
+    "text": "MALUKU UTARA 4"
+  },
+  {
+    "id": "820005",
+    "text": "MALUKU UTARA 5"
+  },
+  {
+    "id": "910001",
+    "text": "P A P U A 1"
+  },
+  {
+    "id": "910002",
+    "text": "P A P U A 2"
+  },
+  {
+    "id": "910003",
+    "text": "P A P U A 3"
+  },
+  {
+    "id": "910004",
+    "text": "P A P U A 4"
+  },
+  {
+    "id": "910005",
+    "text": "P A P U A 5"
+  },
+  {
+    "id": "910006",
+    "text": "P A P U A 6"
+  },
+  {
+    "id": "910007",
+    "text": "P A P U A 7"
+  },
+  {
+    "id": "920001",
+    "text": "PAPUA BARAT 1"
+  },
+  {
+    "id": "920002",
+    "text": "PAPUA BARAT 2"
+  },
+  {
+    "id": "920003",
+    "text": "PAPUA BARAT 3"
+  },
+  {
+    "id": "920004",
+    "text": "PAPUA BARAT 4"
+  },
+  {
+    "id": "920005",
+    "text": "PAPUA BARAT 5"
+  },
+  {
+    "id": "930001",
+    "text": "PAPUA SELATAN 1"
+  },
+  {
+    "id": "930002",
+    "text": "PAPUA SELATAN 2"
+  },
+  {
+    "id": "930003",
+    "text": "PAPUA SELATAN 3"
+  },
+  {
+    "id": "930004",
+    "text": "PAPUA SELATAN 4"
+  },
+  {
+    "id": "930005",
+    "text": "PAPUA SELATAN 5"
+  },
+  {
+    "id": "940001",
+    "text": "PAPUA TENGAH 1"
+  },
+  {
+    "id": "940002",
+    "text": "PAPUA TENGAH 2"
+  },
+  {
+    "id": "940003",
+    "text": "PAPUA TENGAH 3"
+  },
+  {
+    "id": "940004",
+    "text": "PAPUA TENGAH 4"
+  },
+  {
+    "id": "940005",
+    "text": "PAPUA TENGAH 5"
+  },
+  {
+    "id": "940006",
+    "text": "PAPUA TENGAH 6"
+  },
+  {
+    "id": "940007",
+    "text": "PAPUA TENGAH 7"
+  },
+  {
+    "id": "940008",
+    "text": "PAPUA TENGAH 8"
+  },
+  {
+    "id": "950001",
+    "text": "PAPUA PEGUNUNGAN 1"
+  },
+  {
+    "id": "950002",
+    "text": "PAPUA PEGUNUNGAN 2"
+  },
+  {
+    "id": "950003",
+    "text": "PAPUA PEGUNUNGAN 3"
+  },
+  {
+    "id": "950004",
+    "text": "PAPUA PEGUNUNGAN 4"
+  },
+  {
+    "id": "950005",
+    "text": "PAPUA PEGUNUNGAN 5"
+  },
+  {
+    "id": "950006",
+    "text": "PAPUA PEGUNUNGAN 6"
+  },
+  {
+    "id": "950007",
+    "text": "PAPUA PEGUNUNGAN 7"
+  },
+  {
+    "id": "960001",
+    "text": "PAPUA BARAT DAYA 1"
+  },
+  {
+    "id": "960002",
+    "text": "PAPUA BARAT DAYA 2"
+  },
+  {
+    "id": "960003",
+    "text": "PAPUA BARAT DAYA 3"
+  },
+  {
+    "id": "960004",
+    "text": "PAPUA BARAT DAYA 4"
+  },
+  {
+    "id": "960005",
+    "text": "PAPUA BARAT DAYA 5"
+  },
+  {
+    "id": "960006",
+    "text": "PAPUA BARAT DAYA 6"
+  }
+]

@@ -12,5 +12,5 @@ node_modules
 /playwright/.cache/
 
 ## Fixtures
-/e2e/fixtures/**/*.html
-/e2e/fixtures/dpr/**/*.json
+/e2e/fixtures/dp*/**/*.html
+/e2e/fixtures/dp*/**/*.json
