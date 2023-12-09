@@ -1,6 +1,7 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
+import { getCandidateFilename, getDapilFilename } from "./filenames";
 import { findHTML, writeHTML, writeJSON } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
@@ -75,7 +76,7 @@ export const createDapilExtractor =
     directory: string;
   }) =>
   async ({ page }: { page: Page }) => {
-    const filename = `${directory}/dapils/${dapil.id}_${dapil.name}.json`;
+    const filename = getDapilFilename({ directory, dapil });
     if (findHTML(filename)) {
       console.debug(`ℹ️ ${filename} exists, skipping.`);
       return;
@@ -93,9 +94,7 @@ export const createDapilExtractor =
       ...dapil,
       candidates,
     });
-    console.debug(
-      `✅ Writing candidates data for dapil ${dapil.name} to ${filename}`,
-    );
+    console.debug(`✅ Writing to ${filename}`);
   };
 
 export const createCandidateDetailsExtractor =
@@ -115,12 +114,10 @@ export const createCandidateDetailsExtractor =
     retrying?: boolean;
   }) =>
   async ({ page }: { page: Page }) => {
-    // TODO: Move the HTML file location to the build assets
-    const { party, number, name } = candidate;
-    const filename = `${directory}/candidates/${dapil.id}_${dapil.name}_${party}_${number}_${name}.html`;
+    const filename = getCandidateFilename({ directory, dapil, candidate });
 
     if (retrying && findHTML(filename)) {
-      console.debug(`ℹ️ [Retrying mode] ${filename} exists, skipping.`);
+      console.debug(`ℹ️ Retrying mode, skipping ${filename}.`);
       return;
     }
 
@@ -136,7 +133,7 @@ export const createCandidateDetailsExtractor =
       .last();
     if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
       console.debug(
-        `❌ Candidate's profile is not open, ${filename} is skipped.`,
+        `❌ Candidate's profile is not open, skipping ${filename}.`,
       );
       return;
     }
@@ -146,10 +143,11 @@ export const createCandidateDetailsExtractor =
       page.getByRole("heading", { name: "PROFIL CALON" }),
     ).toBeVisible();
 
+    const { name } = candidate;
     await expect(page.getByRole("cell", { name })).toBeVisible();
 
     const html = await page.locator("[class='card']").innerHTML();
 
-    console.debug(`✅ Writing candidate HTML profile to ${filename}`);
+    console.debug(`✅ Writing to ${filename}`);
     await writeHTML(filename, html);
   };
