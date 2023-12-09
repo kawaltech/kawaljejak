@@ -44,6 +44,7 @@ export default defineConfig({
       name: "candidate",
       use: { ...devices["Desktop Chrome"] },
       testMatch: "candidates/*.spec.ts",
+      dependencies: ["dapil"],
     },
     {
       name: "test",

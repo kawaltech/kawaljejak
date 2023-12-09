@@ -75,6 +75,12 @@ export const createDapilExtractor =
     directory: string;
   }) =>
   async ({ page }: { page: Page }) => {
+    const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
+    if (findHtml(filename)) {
+      console.debug(`ℹ️ ${filename} exists, skipping.`);
+      return;
+    }
+
     const rows = await findCandidateRowsForDapil({ page, url, dapil });
     const allRows = await rows.all();
     const allRowsWithoutHeader = allRows.slice(1);
@@ -83,7 +89,6 @@ export const createDapilExtractor =
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
     );
 
-    const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
     writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, {
       ...dapil,
       candidates,
