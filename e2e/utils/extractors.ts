@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
-import { writeFixture, writeHtml } from "./fixtures";
+import { findHtml, writeFixture, writeHtml } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -95,23 +95,30 @@ export const createCandidateDetailsExtractor =
     directory,
     index,
     candidate,
+    retrying = true,
   }: {
     url: string;
     dapil: Dapil;
     directory: string;
     index: number;
     candidate: CandidateDetails;
+    retrying?: boolean;
   }) =>
   async ({ page }: { page: Page }) => {
+    // TODO: Move the HTML file location to the build assets
+    const { party, number, name } = candidate;
+    const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
+
+    if (retrying && findHtml(filename)) {
+      console.debug(`ℹ️ [Retrying mode] ${filename} exists, skipping.`);
+      return;
+    }
+
     const rows = await findCandidateRowsForDapil({
       page,
       url,
       dapil,
     });
-
-    // TODO: Move the HTML file location to the build assets
-    const { party, number, name } = candidate;
-    const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
 
     const action = rows
       .nth(index + 1)

@@ -13,6 +13,11 @@ export const readFixture = async (relativePath: string) => {
   return await fs.promises.readFile(fixturePath, "utf8");
 };
 
+export const findHtml = (relativePath: string) => {
+  const fixturePath = path.join(FIXTURES_ROOT, relativePath);
+  return fs.existsSync(fixturePath);
+};
+
 export const writeHtml = async (relativePath: string, html: string) => {
   const fixturePath = path.join(FIXTURES_ROOT, relativePath);
   await fs.promises.writeFile(fixturePath, html);
