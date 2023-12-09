@@ -84,9 +84,8 @@ export const createDapilExtractor =
     );
 
     const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
-    console.debug(`Writing candidates data to ${filename}`);
-
     writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, { candidates });
+    console.debug(`✅ Writing candidates data to ${filename}`);
   };
 
 export const createCandidateDetailsExtractor =
@@ -119,7 +118,9 @@ export const createCandidateDetailsExtractor =
       .locator("td")
       .last();
     if (await action.getByRole("link").isVisible()) {
-      console.debug(`Candidate's profile is not open, ${filename} is skipped.`);
+      console.debug(
+        `❌ Candidate's profile is not open, ${filename} is skipped.`,
+      );
       return;
     }
 
@@ -132,6 +133,6 @@ export const createCandidateDetailsExtractor =
 
     const html = await page.locator("[class='card']").innerHTML();
 
-    console.debug(`Writing candidate HTML profile to ${filename}`);
+    console.debug(`✅ Writing candidate HTML profile to ${filename}`);
     await writeHtml(filename, html);
   };
