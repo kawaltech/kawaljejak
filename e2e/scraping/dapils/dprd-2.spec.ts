@@ -8,7 +8,8 @@ test.describe.configure({ mode: "parallel" });
 
 const directory = DIRECTORIES.DPRD_2;
 
-dprd2.forEach((dapil) => {
+// TODO: Ensure the script works well for the first dapil before running it for all dapils
+dprd2.slice(0, 1).forEach((dapil) => {
   test(
     `fetching for ${getDapilFilename({ directory, dapil })}}`,
     createDapilExtractor({

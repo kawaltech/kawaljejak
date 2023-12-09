@@ -14,5 +14,4 @@ node_modules
 ## Fixtures
 /e2e/data/dp*/dapils/*.json
 /e2e/data/dp*/candidates/*.html
-/e2e/fixtures/dp*/**/*.html
-/e2e/fixtures/dp*/**/*.json
+/e2e/data/dp*/*.zip

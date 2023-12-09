@@ -24,6 +24,7 @@ dpr.forEach(({ id, name }) => {
         url: URLS.DPR,
         index,
         candidate,
+        retrying: true,
       }),
     );
   });
