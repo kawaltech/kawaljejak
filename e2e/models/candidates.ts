@@ -5,3 +5,5 @@ export type CandidateDetails = {
   gender: string;
   address: string;
 };
+
+export type Candidate = { id: number } & CandidateDetails;

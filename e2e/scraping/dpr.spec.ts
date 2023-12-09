@@ -1,6 +1,9 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
-import { parseCandidateDetails } from "e2e/utils/extractors";
+import {
+  extractCandidateFromRow,
+  parseCandidateDetails,
+} from "e2e/utils/extractors";
 import { readFixture, writeHtml } from "e2e/utils/fixtures";
 
 test("fetch candidates", async ({ page }) => {
@@ -27,16 +30,9 @@ test("fetch candidates", async ({ page }) => {
   const rows = page.locator("tr");
   // TODO: traverse all rows
 
-  const fields = rows.nth(1).locator("td");
+  const candidate = await extractCandidateFromRow(rows.nth(1));
 
-  const allInnerTexts = await fields.allInnerTexts();
-  const candidateDetails = parseCandidateDetails(allInnerTexts);
-
-  const id = parseInt(
-    await fields.last().locator("#id_calon_dpr").inputValue(),
-  );
-
-  console.debug({ id, ...candidateDetails });
+  console.debug(candidate);
   // TODO: Store data into a JSON file using writeFixture
   // TODO: Fetch and store images
 });

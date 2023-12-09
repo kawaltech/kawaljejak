@@ -1,5 +1,5 @@
 import type { Locator } from "@playwright/test";
-import type { CandidateDetails } from "e2e/models/candidates";
+import type { Candidate, CandidateDetails } from "e2e/models/candidates";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -22,4 +22,16 @@ export const parseCandidateDetails = (
   const address = innerTexts[6];
 
   return { party, number, name, gender, address };
+};
+
+export const extractCandidateFromRow = async (
+  row: Locator,
+): Promise<Candidate> => {
+  const cells = row.locator("td");
+  const allInnerTexts = await cells.allInnerTexts();
+  const candidateDetails = parseCandidateDetails(allInnerTexts);
+
+  const id = parseInt(await cells.last().locator("#id_calon_dpr").inputValue());
+
+  return { id, ...candidateDetails };
 };
