@@ -84,8 +84,13 @@ export const createDapilExtractor =
     );
 
     const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
-    writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, { candidates });
-    console.debug(`✅ Writing candidates data to ${filename}`);
+    writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, {
+      ...dapil,
+      candidates,
+    });
+    console.debug(
+      `✅ Writing candidates data for dapil ${dapil.name} to ${filename}`,
+    );
   };
 
 export const createCandidateDetailsExtractor =
