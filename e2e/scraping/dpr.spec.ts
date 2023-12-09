@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
-import { nthExtractor } from "e2e/utils/extractors";
+import { parseCandidateDetails } from "e2e/utils/extractors";
 import { readFixture, writeHtml } from "e2e/utils/fixtures";
 
 test("fetch candidates", async ({ page }) => {
@@ -29,35 +29,16 @@ test("fetch candidates", async ({ page }) => {
 
   const fields = rows.nth(1).locator("td");
 
-  const textContents = [];
-  for (let i = 0; i < (await fields.count()); i++) {
-    const textContent = await fields.nth(i).textContent();
-    textContents.push(textContent);
-    console.log(i, textContent);
-  }
-
-  const fieldExtractor = nthExtractor(fields);
+  const allInnerTexts = await fields.allInnerTexts();
+  const candidateDetails = parseCandidateDetails(allInnerTexts);
 
   const id = parseInt(
     await fields.last().locator("#id_calon_dpr").inputValue(),
   );
-  const party = await fieldExtractor(0);
-  const number = parseInt((await fieldExtractor(2))?.substring(10));
-  const name = await fieldExtractor(4);
-  const gender = await fieldExtractor(5);
-  const address = await fieldExtractor(6);
 
-  console.debug({ id, party, number, name, gender, address });
-  // TODO: Store data
+  console.debug({ id, ...candidateDetails });
+  // TODO: Store data into a JSON file using writeFixture
   // TODO: Fetch and store images
-
-  await fields.last().getByRole("button").click();
-
-  await expect(
-    page.getByRole("heading", { name: "PROFIL CALON" }),
-  ).toBeVisible();
-
-  await expect(page.getByRole("cell", { name })).toBeVisible();
 });
 
 test("fetch candidate details", async ({ page }) => {
@@ -83,10 +64,10 @@ test("fetch candidate details", async ({ page }) => {
   // TODO: traverse all rows
 
   const fields = rows.nth(1).locator("td");
-  const fieldExtractor = nthExtractor(fields);
-  const name = await fieldExtractor(4);
-  await fields.last().getByRole("button").click();
+  const allInnerTexts = await fields.allInnerTexts();
+  const { party, number, name } = parseCandidateDetails(allInnerTexts);
 
+  await fields.last().getByRole("button").click();
   await expect(
     page.getByRole("heading", { name: "PROFIL CALON" }),
   ).toBeVisible();
@@ -95,7 +76,8 @@ test("fetch candidate details", async ({ page }) => {
 
   const html = await page.locator("[class='card']").innerHTML();
 
-  await writeHtml(`dpr/${name}.html`, html);
-  // TODO: Store data as HTML file
-  // TODO: Render the HTML file with the image and custom CSS
+  // TODO: Move the HTML file location to the build assets
+  await writeHtml(`dpr/${party}_${number}_${name}.html`, html);
+
+  // TODO: Render the HTML file with custom CSS
 });
