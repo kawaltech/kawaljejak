@@ -5,32 +5,26 @@ import {
   parseCandidateDetails,
 } from "e2e/utils/extractors";
 import { readFixture, writeHtml } from "e2e/utils/fixtures";
+import dapils from "../fixtures/dapils.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
-test(
-  "fetch candidates from ACEH I dapil",
-  createDapilExtractor({
-    id: 1101,
-    name: "ACEH I",
-  }),
-);
+dapils.dpr.forEach((dapil) => {
+  test(
+    `fetch candidates from ${dapil.name} dapil`,
+    createDapilExtractor(dapil),
+  );
+});
 
-test(
-  "fetch candidates from ACEH II dapil",
-  createDapilExtractor({
-    id: 1102,
-    name: "ACEH II",
-  }),
-);
-
-test(
-  "fetch candidates from SUMATERA UTARA I dapil",
-  createDapilExtractor({
-    id: 1201,
-    name: "SUMATERA UTARA I",
-  }),
-);
+// test("fetch candidates from ACEH I dapil", createDapilExtractor(dapils.dpr[0]));
+// test(
+//   "fetch candidates from ACEH II dapil",
+//   createDapilExtractor(dapils.dpr[1]),
+// );
+// test(
+//   "fetch candidates from SUMATERA UTARA I dapil",
+//   createDapilExtractor(dapils.dpr[2]),
+// );
 
 test("fetch candidate details", async ({ page }) => {
   await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
