@@ -4,7 +4,12 @@ node_modules
 /build
 /public/build
 .env
+
+## Playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+## Fixtures
+/e2e/fixtures/**/*.html

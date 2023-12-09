@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Dapils } from "e2e/models/dapils";
 import { nthExtractor } from "e2e/utils/extractors";
-import { readFixture } from "e2e/utils/fixtures";
+import { readFixture, writeHtml } from "e2e/utils/fixtures";
 
 test("fetch candidates", async ({ page }) => {
   await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
@@ -93,6 +93,9 @@ test("fetch candidate details", async ({ page }) => {
 
   await expect(page.getByRole("cell", { name })).toBeVisible();
 
+  const html = await page.locator("[class='card']").innerHTML();
+
+  await writeHtml(`dpr/${name}.html`, html);
   // TODO: Store data as HTML file
   // TODO: Render the HTML file with the image and custom CSS
 });
