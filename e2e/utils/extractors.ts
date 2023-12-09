@@ -117,7 +117,7 @@ export const createCandidateDetailsExtractor =
   async ({ page }: { page: Page }) => {
     // TODO: Move the HTML file location to the build assets
     const { party, number, name } = candidate;
-    const filename = `${directory}/${dapil.name}_${party}_${number}_${name}.html`;
+    const filename = `${directory}/${dapil.id}_${dapil.name}_${party}_${number}_${name}.html`;
 
     if (retrying && findHtml(filename)) {
       console.debug(`ℹ️ [Retrying mode] ${filename} exists, skipping.`);
