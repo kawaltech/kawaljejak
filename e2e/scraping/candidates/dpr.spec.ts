@@ -7,7 +7,7 @@ import dpr from "../../fixtures/dpr.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
-dpr.slice(0, 1).forEach(({ id, name }) => {
+dpr.forEach(({ id, name }) => {
   const directory = "dpr";
   const dapil = readJSON<DapilWithCandidates>(
     `${directory}/dapils/${id}_${name}.json`,
