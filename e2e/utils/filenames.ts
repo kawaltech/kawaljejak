@@ -1,11 +1,12 @@
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
+import type { Directory } from "./constants";
 
 export const getDapilFilename = ({
   directory,
   dapil,
 }: {
-  directory: string;
+  directory: Directory;
   dapil: Dapil;
 }) => `${directory}/dapils/${dapil.id}_${dapil.name}.json`;
 
@@ -14,7 +15,7 @@ export const getCandidateFilename = ({
   dapil,
   candidate,
 }: {
-  directory: string;
+  directory: Directory;
   dapil: Dapil;
   candidate: CandidateDetails;
 }) =>

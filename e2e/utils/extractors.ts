@@ -1,6 +1,7 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
+import type { Directory, Url } from "./constants";
 import { getCandidateFilename, getDapilFilename } from "./filenames";
 import { findHTML, writeHTML, writeJSON } from "./fixtures";
 
@@ -49,7 +50,7 @@ export const findCandidateRowsForDapil = async ({
   dapil,
 }: {
   page: Page;
-  url: string;
+  url: Url;
   dapil: Dapil;
 }) => {
   await page.goto(url);
@@ -71,9 +72,9 @@ export const createDapilExtractor =
     dapil,
     directory,
   }: {
-    url: string;
+    url: Url;
     dapil: Dapil;
-    directory: string;
+    directory: Directory;
   }) =>
   async ({ page }: { page: Page }) => {
     const filename = getDapilFilename({ directory, dapil });
@@ -106,9 +107,9 @@ export const createCandidateDetailsExtractor =
     candidate,
     retrying = true,
   }: {
-    url: string;
+    url: Url;
     dapil: Dapil;
-    directory: string;
+    directory: Directory;
     index: number;
     candidate: CandidateDetails;
     retrying?: boolean;

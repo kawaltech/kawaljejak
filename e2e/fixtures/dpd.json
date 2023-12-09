@@ -1,154 +1,154 @@
 [
   {
-    "id": "11",
-    "text": "ACEH"
+    "id": 11,
+    "name": "ACEH"
   },
   {
-    "id": "12",
-    "text": "SUMATERA UTARA"
+    "id": 12,
+    "name": "SUMATERA UTARA"
   },
   {
-    "id": "13",
-    "text": "SUMATERA BARAT"
+    "id": 13,
+    "name": "SUMATERA BARAT"
   },
   {
-    "id": "14",
-    "text": "RIAU"
+    "id": 14,
+    "name": "RIAU"
   },
   {
-    "id": "15",
-    "text": "JAMBI"
+    "id": 15,
+    "name": "JAMBI"
   },
   {
-    "id": "16",
-    "text": "SUMATERA SELATAN"
+    "id": 16,
+    "name": "SUMATERA SELATAN"
   },
   {
-    "id": "17",
-    "text": "BENGKULU"
+    "id": 17,
+    "name": "BENGKULU"
   },
   {
-    "id": "18",
-    "text": "LAMPUNG"
+    "id": 18,
+    "name": "LAMPUNG"
   },
   {
-    "id": "19",
-    "text": "KEPULAUAN BANGKA BELITUNG"
+    "id": 19,
+    "name": "KEPULAUAN BANGKA BELITUNG"
   },
   {
-    "id": "21",
-    "text": "KEPULAUAN RIAU"
+    "id": 21,
+    "name": "KEPULAUAN RIAU"
   },
   {
-    "id": "31",
-    "text": "DKI JAKARTA"
+    "id": 31,
+    "name": "DKI JAKARTA"
   },
   {
-    "id": "32",
-    "text": "JAWA BARAT"
+    "id": 32,
+    "name": "JAWA BARAT"
   },
   {
-    "id": "33",
-    "text": "JAWA TENGAH"
+    "id": 33,
+    "name": "JAWA TENGAH"
   },
   {
-    "id": "34",
-    "text": "DAERAH ISTIMEWA YOGYAKARTA"
+    "id": 34,
+    "name": "DAERAH ISTIMEWA YOGYAKARTA"
   },
   {
-    "id": "35",
-    "text": "JAWA TIMUR"
+    "id": 35,
+    "name": "JAWA TIMUR"
   },
   {
-    "id": "36",
-    "text": "BANTEN"
+    "id": 36,
+    "name": "BANTEN"
   },
   {
-    "id": "51",
-    "text": "BALI"
+    "id": 51,
+    "name": "BALI"
   },
   {
-    "id": "52",
-    "text": "NUSA TENGGARA BARAT"
+    "id": 52,
+    "name": "NUSA TENGGARA BARAT"
   },
   {
-    "id": "53",
-    "text": "NUSA TENGGARA TIMUR"
+    "id": 53,
+    "name": "NUSA TENGGARA TIMUR"
   },
   {
-    "id": "61",
-    "text": "KALIMANTAN BARAT"
+    "id": 61,
+    "name": "KALIMANTAN BARAT"
   },
   {
-    "id": "62",
-    "text": "KALIMANTAN TENGAH"
+    "id": 62,
+    "name": "KALIMANTAN TENGAH"
   },
   {
-    "id": "63",
-    "text": "KALIMANTAN SELATAN"
+    "id": 63,
+    "name": "KALIMANTAN SELATAN"
   },
   {
-    "id": "64",
-    "text": "KALIMANTAN TIMUR"
+    "id": 64,
+    "name": "KALIMANTAN TIMUR"
   },
   {
-    "id": "71",
-    "text": "SULAWESI UTARA"
+    "id": 71,
+    "name": "SULAWESI UTARA"
   },
   {
-    "id": "72",
-    "text": "SULAWESI TENGAH"
+    "id": 72,
+    "name": "SULAWESI TENGAH"
   },
   {
-    "id": "73",
-    "text": "SULAWESI SELATAN"
+    "id": 73,
+    "name": "SULAWESI SELATAN"
   },
   {
-    "id": "74",
-    "text": "SULAWESI TENGGARA"
+    "id": 74,
+    "name": "SULAWESI TENGGARA"
   },
   {
-    "id": "75",
-    "text": "GORONTALO"
+    "id": 75,
+    "name": "GORONTALO"
   },
   {
-    "id": "76",
-    "text": "SULAWESI BARAT"
+    "id": 76,
+    "name": "SULAWESI BARAT"
   },
   {
-    "id": "81",
-    "text": "MALUKU"
+    "id": 81,
+    "name": "MALUKU"
   },
   {
-    "id": "82",
-    "text": "MALUKU UTARA"
+    "id": 82,
+    "name": "MALUKU UTARA"
   },
   {
-    "id": "91",
-    "text": "PAPUA"
+    "id": 91,
+    "name": "PAPUA"
   },
   {
-    "id": "92",
-    "text": "PAPUA BARAT"
+    "id": 92,
+    "name": "PAPUA BARAT"
   },
   {
-    "id": "65",
-    "text": "KALIMANTAN UTARA"
+    "id": 65,
+    "name": "KALIMANTAN UTARA"
   },
   {
-    "id": "93",
-    "text": "PAPUA SELATAN"
+    "id": 93,
+    "name": "PAPUA SELATAN"
   },
   {
-    "id": "94",
-    "text": "PAPUA TENGAH"
+    "id": 94,
+    "name": "PAPUA TENGAH"
   },
   {
-    "id": "95",
-    "text": "PAPUA PEGUNUNGAN"
+    "id": 95,
+    "name": "PAPUA PEGUNUNGAN"
   },
   {
-    "id": "96",
-    "text": "PAPUA BARAT DAYA"
+    "id": 96,
+    "name": "PAPUA BARAT DAYA"
   }
 ]
