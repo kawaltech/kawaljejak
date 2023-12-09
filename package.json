@@ -8,8 +8,10 @@
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "e2e:scrape": "playwright test --project=scraping",
-    "e2e:scrape:ui": "playwright test --project=scraping --ui",
+    "e2e:dapil": "playwright test --project=dapil",
+    "e2e:dapil:ui": "playwright test --project=dapil --ui",
+    "e2e:candidate": "playwright test --project=candidate",
+    "e2e:candidate:ui": "playwright test --project=candidate --ui",
     "e2e:test": "playwright test --project=tests"
   },
   "dependencies": {

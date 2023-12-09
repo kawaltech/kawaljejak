@@ -36,12 +36,17 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "scraping",
+      name: "dapil",
       use: { ...devices["Desktop Chrome"] },
-      testMatch: "scraping/*.spec.ts",
+      testMatch: "dapils/*.spec.ts",
     },
     {
-      name: "tests",
+      name: "candidate",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: "candidates/*.spec.ts",
+    },
+    {
+      name: "test",
       use: { ...devices["Desktop Chrome"] },
       testMatch: "tests/*.spec.ts",
     },
