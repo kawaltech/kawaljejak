@@ -43,9 +43,17 @@ export const extractCandidateDetailsFromRow = async (
 };
 
 export const createDapilExtractor =
-  (dapil: Dapil) =>
+  ({
+    url,
+    dapil,
+    directory,
+  }: {
+    url: string;
+    dapil: Dapil;
+    directory: string;
+  }) =>
   async ({ page }: { page: Page }) => {
-    await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
+    await page.goto(url);
 
     await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
     await expect(
@@ -69,5 +77,5 @@ export const createDapilExtractor =
     );
     console.debug(candidates);
 
-    writeFixture(`dpr/${dapil.id}_${dapil.name}.json`, { candidates });
+    writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, { candidates });
   };

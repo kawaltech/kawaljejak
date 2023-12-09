@@ -11,20 +11,14 @@ test.describe.configure({ mode: "parallel" });
 
 dapils.dpr.forEach((dapil) => {
   test(
-    `fetch candidates from ${dapil.name} dapil`,
-    createDapilExtractor(dapil),
+    `fetch DPR candidates from ${dapil.name} dapil`,
+    createDapilExtractor({
+      dapil,
+      directory: "dpr",
+      url: "https://infopemilu.kpu.go.id/Pemilu/Dct_dpr",
+    }),
   );
 });
-
-// test("fetch candidates from ACEH I dapil", createDapilExtractor(dapils.dpr[0]));
-// test(
-//   "fetch candidates from ACEH II dapil",
-//   createDapilExtractor(dapils.dpr[1]),
-// );
-// test(
-//   "fetch candidates from SUMATERA UTARA I dapil",
-//   createDapilExtractor(dapils.dpr[2]),
-// );
 
 test("fetch candidate details", async ({ page }) => {
   await page.goto("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr");
