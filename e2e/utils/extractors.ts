@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
-import { findHtml, writeFixture, writeHtml } from "./fixtures";
+import { findHTML, writeHTML, writeJSON } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -75,8 +75,8 @@ export const createDapilExtractor =
     directory: string;
   }) =>
   async ({ page }: { page: Page }) => {
-    const filename = `${directory}/${dapil.id}_${dapil.name}.json`;
-    if (findHtml(filename)) {
+    const filename = `${directory}/dapils/${dapil.id}_${dapil.name}.json`;
+    if (findHTML(filename)) {
       console.debug(`ℹ️ ${filename} exists, skipping.`);
       return;
     }
@@ -89,7 +89,7 @@ export const createDapilExtractor =
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
     );
 
-    writeFixture(`${directory}/${dapil.id}_${dapil.name}.json`, {
+    writeJSON(filename, {
       ...dapil,
       candidates,
     });
@@ -117,9 +117,9 @@ export const createCandidateDetailsExtractor =
   async ({ page }: { page: Page }) => {
     // TODO: Move the HTML file location to the build assets
     const { party, number, name } = candidate;
-    const filename = `${directory}/${dapil.id}_${dapil.name}_${party}_${number}_${name}.html`;
+    const filename = `${directory}/candidates/${dapil.id}_${dapil.name}_${party}_${number}_${name}.html`;
 
-    if (retrying && findHtml(filename)) {
+    if (retrying && findHTML(filename)) {
       console.debug(`ℹ️ [Retrying mode] ${filename} exists, skipping.`);
       return;
     }
@@ -151,5 +151,5 @@ export const createCandidateDetailsExtractor =
     const html = await page.locator("[class='card']").innerHTML();
 
     console.debug(`✅ Writing candidate HTML profile to ${filename}`);
-    await writeHtml(filename, html);
+    await writeHTML(filename, html);
   };
