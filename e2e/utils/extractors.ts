@@ -117,7 +117,7 @@ export const createCandidateDetailsExtractor =
       .nth(index + 1)
       .locator("td")
       .last();
-    if (await action.getByRole("link").isVisible()) {
+    if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
       console.debug(
         `❌ Candidate's profile is not open, ${filename} is skipped.`,
       );
