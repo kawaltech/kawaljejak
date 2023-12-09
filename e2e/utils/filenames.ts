@@ -20,3 +20,14 @@ export const getCandidateFilename = ({
   candidate: CandidateDetails;
 }) =>
   `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.html`;
+
+export const getClosedCandidateFilename = ({
+  directory,
+  dapil,
+  candidate,
+}: {
+  directory: Directory;
+  dapil: Dapil;
+  candidate: CandidateDetails;
+}) =>
+  `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.json`;

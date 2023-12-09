@@ -2,8 +2,12 @@ import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
 import type { Directory, Url } from "./constants";
-import { getCandidateFilename, getDapilFilename } from "./filenames";
-import { findHTML, writeHTML, writeJSON } from "./fixtures";
+import {
+  getCandidateFilename,
+  getClosedCandidateFilename,
+  getDapilFilename,
+} from "./filenames";
+import { findFile, writeHTML, writeJSON } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
@@ -78,7 +82,7 @@ export const createDapilExtractor =
   }) =>
   async ({ page }: { page: Page }) => {
     const filename = getDapilFilename({ directory, dapil });
-    if (findHTML(filename)) {
+    if (findFile(filename)) {
       console.debug(`ℹ️ ${filename} exists, skipping.`);
       return;
     }
@@ -116,10 +120,21 @@ export const createCandidateDetailsExtractor =
   }) =>
   async ({ page }: { page: Page }) => {
     const filename = getCandidateFilename({ directory, dapil, candidate });
+    const closedCandidateFilename = getClosedCandidateFilename({
+      directory,
+      dapil,
+      candidate,
+    });
 
-    if (retrying && findHTML(filename)) {
-      console.debug(`ℹ️ Retrying mode, skipping ${filename}.`);
-      return;
+    if (retrying) {
+      if (findFile(filename)) {
+        console.debug(`ℹ️ Retrying mode, skipping ${filename}.`);
+        return;
+      }
+      if (findFile(closedCandidateFilename)) {
+        console.debug(`ℹ️ Retrying mode, skipping ${closedCandidateFilename}.`);
+        return;
+      }
     }
 
     const rows = await findCandidateRowsForDapil({
@@ -134,8 +149,9 @@ export const createCandidateDetailsExtractor =
       .last();
     if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
       console.debug(
-        `❌ Candidate's profile is not open, skipping ${filename}.`,
+        `❌ Candidate's profile is not open, storing ${closedCandidateFilename} instead.`,
       );
+      await writeJSON(closedCandidateFilename, {});
       return;
     }
 

@@ -15,7 +15,7 @@ export const writeJSON = async (relativePath: string, data: object) => {
   await fs.promises.writeFile(fixturePath, JSON.stringify(data, null, 2));
 };
 
-export const findHTML = (relativePath: string) => {
+export const findFile = (relativePath: string) => {
   const fixturePath = path.join(FIXTURES_ROOT, relativePath);
   return fs.existsSync(fixturePath);
 };
