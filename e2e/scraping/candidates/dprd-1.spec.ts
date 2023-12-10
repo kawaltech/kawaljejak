@@ -12,7 +12,7 @@ test.describe.configure({ mode: "parallel" });
 const directory = DIRECTORIES.DPRD_1;
 const url = URLS.DPRD_1;
 
-dprd1.forEach(({ id, name }) => {
+dprd1.slice(121).forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
     getDapilFilename({ directory, dapil: { id, name } }),
   );
@@ -33,11 +33,7 @@ dprd1.forEach(({ id, name }) => {
       });
     } else {
       test(
-        `${getCandidateFilename({
-          directory,
-          dapil,
-          candidate,
-        })}`,
+        filename,
         createCandidateDetailsExtractor({
           dapil,
           directory,

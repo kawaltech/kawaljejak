@@ -91,11 +91,11 @@ export const findCandidateRowsForDapil = async ({
     await page
       .getByRole("row", { name: dapil.alias ?? dapil.name, exact: false })
       .first()
-      .waitFor({ state: "visible", timeout: 60_000 });
+      .waitFor({ state: "visible", timeout: 30_000 });
   } else {
     await page
       .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
-      .waitFor({ state: "hidden", timeout: 60_000 });
+      .waitFor({ state: "hidden", timeout: 30_000 });
   }
 
   return page.locator("tr");
