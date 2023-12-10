@@ -20,6 +20,7 @@ dpr.forEach((dapil) => {
         dapil,
         directory,
         url: URLS.DPR,
+        withPartyNumber: true,
       }),
     );
   }
