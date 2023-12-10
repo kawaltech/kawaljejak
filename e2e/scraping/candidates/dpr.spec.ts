@@ -31,13 +31,13 @@ dpr.forEach(({ id, name }) => {
 });
 
 test.afterEach(async ({ page }, testInfo) => {
-  if (testInfo.status === "timedOut") {
+  if (testInfo.status !== "passed") {
     const failedCandidateFilename = testInfo.title
       .replace(/^fetching for /, "")
       .replace(/html$/, "json");
     console.debug(
       `❌ Candidate's profile is open but unavailable, storing ${failedCandidateFilename} instead.`,
     );
-    await writeJSON(failedCandidateFilename, { testInfo });
+    await writeJSON(failedCandidateFilename, { status: testInfo.status });
   }
 });
