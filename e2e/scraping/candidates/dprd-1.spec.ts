@@ -9,7 +9,8 @@ import dprd1 from "../../fixtures/dprd-1.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
-const directory = DIRECTORIES.DPR;
+const directory = DIRECTORIES.DPRD_1;
+const url = URLS.DPRD_1;
 
 dprd1.slice(0, 1).forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
@@ -34,15 +35,15 @@ dprd1.slice(0, 1).forEach(({ id, name }) => {
         });
       } else {
         test(
-          `fetching for ${getCandidateFilename({
+          `${getCandidateFilename({
             directory,
             dapil,
             candidate,
           })}`,
           createCandidateDetailsExtractor({
             dapil,
-            directory: "dpr",
-            url: URLS.DPR,
+            directory,
+            url,
             index,
             candidate,
           }),
@@ -51,14 +52,12 @@ dprd1.slice(0, 1).forEach(({ id, name }) => {
     });
 });
 
-test.afterEach(async ({ page }, testInfo) => {
-  if (testInfo.status === "timedOut") {
-    const failedCandidateFilename = testInfo.title
-      .replace(/^fetching for /, "")
-      .replace(/html$/, "json");
+test.afterEach(async ({ page }, { title, status }) => {
+  const closedCandidateFilename = title.replace(/html$/, "json");
+  if (status === "timedOut") {
     console.debug(
-      `❌ Candidate's profile is open but unavailable, storing ${failedCandidateFilename} instead.`,
+      `❌ Candidate's profile is open but unavailable, storing ${closedCandidateFilename} instead.`,
     );
-    await writeJSON(failedCandidateFilename, { status: testInfo.status });
+    await writeJSON(closedCandidateFilename, { status });
   }
 });

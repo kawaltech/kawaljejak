@@ -8,6 +8,7 @@ import dprd2 from "../../fixtures/dprd-2.json" assert { type: "json" };
 test.describe.configure({ mode: "parallel" });
 
 const directory = DIRECTORIES.DPRD_2;
+const url = URLS.DPRD_2;
 
 // TODO: Ensure the script works well for the first dapil before running it for all dapils
 dprd2.slice(0, 1).forEach((dapil) => {
@@ -20,7 +21,7 @@ dprd2.slice(0, 1).forEach((dapil) => {
       createDapilExtractor({
         dapil,
         directory,
-        url: URLS.DPRD_2,
+        url,
         withPartyNumber: true,
       }),
     );

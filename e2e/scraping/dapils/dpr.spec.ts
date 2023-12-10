@@ -8,6 +8,7 @@ import dpr from "../../fixtures/dpr.json" assert { type: "json" };
 test.describe.configure({ mode: "parallel" });
 
 const directory = DIRECTORIES.DPR;
+const url = URLS.DPR;
 
 dpr.forEach((dapil) => {
   const filename = getDapilFilename({ directory, dapil });
@@ -19,7 +20,7 @@ dpr.forEach((dapil) => {
       createDapilExtractor({
         dapil,
         directory,
-        url: URLS.DPR,
+        url,
         withPartyNumber: true,
       }),
     );

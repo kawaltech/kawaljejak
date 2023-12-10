@@ -10,6 +10,7 @@ import dpr from "../../fixtures/dpr.json" assert { type: "json" };
 test.describe.configure({ mode: "parallel" });
 
 const directory = DIRECTORIES.DPR;
+const url = URLS.DPR;
 
 dpr.forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
@@ -35,8 +36,8 @@ dpr.forEach(({ id, name }) => {
         `fetching for ${getCandidateFilename({ directory, dapil, candidate })}`,
         createCandidateDetailsExtractor({
           dapil,
-          directory: "dpr",
-          url: URLS.DPR,
+          directory,
+          url,
           index,
           candidate,
         }),

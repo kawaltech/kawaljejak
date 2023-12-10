@@ -137,7 +137,7 @@ export const createCandidateDetailsExtractor =
       console.debug(
         `❌ Candidate's profile is not open, storing ${closedCandidateFilename} instead.`,
       );
-      await writeJSON(closedCandidateFilename, {});
+      await writeJSON(closedCandidateFilename, { status: "failed" });
       return;
     }
 

@@ -7,6 +7,7 @@ import dpd from "../../fixtures/dpd.json" assert { type: "json" };
 test.describe.configure({ mode: "parallel" });
 
 const directory = DIRECTORIES.DPD;
+const url = URLS.DPD;
 
 // TODO: Ensure the script works well for the first dapil before running it for all dapils
 dpd.slice(0, 0).forEach((dapil) => {
@@ -16,7 +17,7 @@ dpd.slice(0, 0).forEach((dapil) => {
     createDapilExtractor({
       dapil,
       directory,
-      url: URLS.DPD,
+      url,
     }),
   );
 });
