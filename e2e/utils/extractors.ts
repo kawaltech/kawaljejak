@@ -18,11 +18,11 @@ const trim = (text: string) => text.trim().replace(/\s+/g, " ");
  */
 const parseCandidateWithProvince = (
   innerTexts: string[],
+  { dapil }: { dapil: Dapil },
 ): CandidateWithProvince => {
-  const [provinceWithPrefix, numberStr, , name, gender, address] = innerTexts;
+  const [, numberStr, , name, gender, address] = innerTexts;
 
-  // FIXME: Use dapil.name instead of parsing it from the table due to the `P A P U A` unique situation
-  const province = trim(provinceWithPrefix.substring("Nama Provinsi ".length));
+  const province = dapil.name;
   const number = parseInt(numberStr.split("\n").pop() ?? "0");
 
   return { province, number, name, gender, address };
@@ -43,13 +43,19 @@ const parseCandidateDetails = (innerTexts: string[]): CandidateDetails => {
 };
 
 const createExtractCandidateDetailsFromRow =
-  ({ withProvince = false }: { withProvince?: boolean } = {}) =>
+  (
+    options: { withProvince: true; dapil: Dapil } | { withProvince: false } = {
+      withProvince: false,
+    },
+  ) =>
   async (row: Locator): Promise<Candidate | CandidateWithProvince> => {
     const cells = row.locator("td");
     const allInnerTexts = await cells.allInnerTexts();
 
-    if (withProvince) {
-      const candidateWithProvince = parseCandidateWithProvince(allInnerTexts);
+    if (options.withProvince) {
+      const candidateWithProvince = parseCandidateWithProvince(allInnerTexts, {
+        dapil: options.dapil,
+      });
       return candidateWithProvince;
     }
 
@@ -124,7 +130,7 @@ export const createDapilExtractor =
     const allRowsWithoutHeader = allRows.slice(1);
 
     const extractCandidateDetailsFromRow = createExtractCandidateDetailsFromRow(
-      { withProvince },
+      { withProvince, dapil },
     );
     const candidates = await Promise.all(
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
