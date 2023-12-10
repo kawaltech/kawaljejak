@@ -9,7 +9,7 @@ test.describe.configure({ mode: "parallel" });
 const directory = DIRECTORIES.DPD;
 
 // TODO: Ensure the script works well for the first dapil before running it for all dapils
-dpd.slice(0, 1).forEach((dapil) => {
+dpd.slice(0, 0).forEach((dapil) => {
   // FIXME: Ensure we have a proper data traversal for this
   test.skip(
     `fetching for ${getDapilFilename({ directory, dapil })}}`,
