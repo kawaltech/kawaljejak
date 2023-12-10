@@ -21,6 +21,7 @@ const parseCandidateWithProvince = (
 ): CandidateWithProvince => {
   const [provinceWithPrefix, numberStr, , name, gender, address] = innerTexts;
 
+  // FIXME: Use dapil.name instead of parsing it from the table due to the `P A P U A` unique situation
   const province = trim(provinceWithPrefix.substring("Nama Provinsi ".length));
   const number = parseInt(numberStr.split("\n").pop() ?? "0");
 
