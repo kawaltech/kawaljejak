@@ -3,11 +3,7 @@ import type { CandidateDetails } from "e2e/models/candidates";
 import type { DapilWithCandidates } from "e2e/models/dapils";
 import { DIRECTORIES, URLS } from "e2e/utils/constants";
 import { createCandidateDetailsExtractor } from "e2e/utils/extractors";
-import {
-  getCandidateFilename,
-  getClosedCandidateFilename,
-  getDapilFilename,
-} from "e2e/utils/filenames";
+import { getCandidateFilename, getDapilFilename } from "e2e/utils/filenames";
 import { findFile, readJSON, writeJSON } from "e2e/utils/fixtures";
 import dpr from "../../fixtures/dpr.json" assert { type: "json" };
 
@@ -21,10 +17,11 @@ dpr.forEach(({ id, name }) => {
   );
   dapil.candidates.forEach((candidate: CandidateDetails, index: number) => {
     const filename = getCandidateFilename({ directory, dapil, candidate });
-    const closedCandidateFilename = getClosedCandidateFilename({
+    const closedCandidateFilename = getCandidateFilename({
       directory,
       dapil,
       candidate,
+      extension: "json",
     });
 
     if (findFile(filename)) {

@@ -14,20 +14,13 @@ export const getCandidateFilename = ({
   directory,
   dapil,
   candidate,
+  extension = "html",
+  partyNumber = false,
 }: {
   directory: Directory;
   dapil: Dapil;
   candidate: CandidateDetails;
+  extension?: "html" | "json";
+  partyNumber?: boolean;
 }) =>
-  `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.html`;
-
-export const getClosedCandidateFilename = ({
-  directory,
-  dapil,
-  candidate,
-}: {
-  directory: Directory;
-  dapil: Dapil;
-  candidate: CandidateDetails;
-}) =>
-  `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.json`;
+  `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.${extension}`;

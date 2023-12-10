@@ -2,11 +2,7 @@ import { expect, type Locator, type Page } from "@playwright/test";
 import type { CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
 import type { Directory, Url } from "./constants";
-import {
-  getCandidateFilename,
-  getClosedCandidateFilename,
-  getDapilFilename,
-} from "./filenames";
+import { getCandidateFilename, getDapilFilename } from "./filenames";
 import { findFile, writeHTML, writeJSON } from "./fixtures";
 
 export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
@@ -128,10 +124,11 @@ export const createCandidateDetailsExtractor =
       .locator("td")
       .last();
     if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
-      const closedCandidateFilename = getClosedCandidateFilename({
+      const closedCandidateFilename = getCandidateFilename({
         directory,
         dapil,
         candidate,
+        extension: "json",
       });
       console.debug(
         `❌ Candidate's profile is not open, storing ${closedCandidateFilename} instead.`,
