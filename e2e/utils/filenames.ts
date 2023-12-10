@@ -15,12 +15,12 @@ export const getCandidateFilename = ({
   dapil,
   candidate,
   extension = "html",
-  partyNumber = false,
+  withPartyNumber = false,
 }: {
   directory: Directory;
   dapil: Dapil;
   candidate: CandidateDetails;
   extension?: "html" | "json";
-  partyNumber?: boolean;
+  withPartyNumber?: boolean;
 }) =>
   `${directory}/candidates/${dapil.id}_${dapil.name}_${candidate.party}_${candidate.number}_${candidate.name}.${extension}`;

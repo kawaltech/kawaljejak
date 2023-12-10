@@ -72,6 +72,30 @@ export const PARTIES_RECORD: Record<string, Party> = {
     number: 17,
     abbreviation: "PPP",
   },
+  "Partai Nanggroe Aceh": {
+    number: 18,
+    abbreviation: "PNA",
+  },
+  "Partai Generasi Atjeh Beusaboh Tha'at Dan Taqwa": {
+    number: 19,
+    abbreviation: "Gabthat",
+  },
+  "Partai Darul Aceh": {
+    number: 20,
+    abbreviation: "PDA",
+  },
+  "Partai Aceh": {
+    number: 21,
+    abbreviation: "PA",
+  },
+  "Partai Adil Sejahtera Aceh": {
+    number: 22,
+    abbreviation: "PASA",
+  },
+  "PARTAI SIRA (SOLIDITAS INDEPENDEN RAKYAT ACEH)": {
+    number: 23,
+    abbreviation: "PSIRA",
+  },
   "Partai Ummat": {
     number: 24,
     abbreviation: "PU",

@@ -1,24 +1,18 @@
 import { expect, type Locator, type Page } from "@playwright/test";
-import type { CandidateDetails } from "e2e/models/candidates";
+import type { Candidate, CandidateDetails } from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
+import { getPartyNumber } from "e2e/models/parties";
 import type { Directory, Url } from "./constants";
 import { getCandidateFilename, getDapilFilename } from "./filenames";
 import { findFile, writeHTML, writeJSON } from "./fixtures";
 
-export const trim = (text: string) => text.trim().replace(/\s+/g, " ");
-
-export const nthExtractor = (locator: Locator) => async (index: number) => {
-  const textContent = (await locator.nth(index).textContent()) ?? "";
-  return trim(textContent);
-};
+const trim = (text: string) => text.trim().replace(/\s+/g, " ");
 
 /**
  * Parse candidate's inner texts into a candidate object
  * @param innerTexts candidate's inner texts
  */
-export const parseCandidateDetails = (
-  innerTexts: string[],
-): CandidateDetails => {
+const parseCandidateDetails = (innerTexts: string[]): CandidateDetails => {
   const party = trim(innerTexts[0]);
   const number = parseInt(innerTexts[2].split("\n").pop() ?? "0");
   const name = innerTexts[4];
@@ -28,21 +22,26 @@ export const parseCandidateDetails = (
   return { party, number, name, gender, address };
 };
 
-export const extractCandidateDetailsFromRow = async (
-  row: Locator,
-): Promise<CandidateDetails> => {
-  const cells = row.locator("td");
-  const allInnerTexts = await cells.allInnerTexts();
-  const candidateDetails = parseCandidateDetails(allInnerTexts);
+const createExtractCandidateDetailsFromRow =
+  ({ withPartyNumber = false }: { withPartyNumber?: boolean } = {}) =>
+  async (row: Locator): Promise<CandidateDetails | Candidate> => {
+    const cells = row.locator("td");
+    const allInnerTexts = await cells.allInnerTexts();
+    const candidateDetails = parseCandidateDetails(allInnerTexts);
 
-  // FIXME: Somehow, the ID is not always available in the table
-  // const idInput = await cells.last().locator("#id_calon_dpr");
-  // const id = idInput ? parseInt(await idInput.inputValue()) : 0;
-  // const candidate: Candidate = { id, ...candidateDetails };
-  // console.debug(candidate);
+    // FIXME: Somehow, the ID is not always available in the table
+    // const idInput = await cells.last().locator("#id_calon_dpr");
+    // const id = idInput ? parseInt(await idInput.inputValue()) : 0;
+    // const candidate: Candidate = { id, ...candidateDetails };
+    // console.debug(candidate);
 
-  return candidateDetails;
-};
+    if (withPartyNumber) {
+      const partyNumber = getPartyNumber(candidateDetails.party);
+      return { partyNumber, ...candidateDetails };
+    }
+
+    return candidateDetails;
+  };
 
 export const findCandidateRowsForDapil = async ({
   page,
@@ -71,10 +70,12 @@ export const createDapilExtractor =
     url,
     dapil,
     directory,
+    withPartyNumber = false,
   }: {
     url: Url;
     dapil: Dapil;
     directory: Directory;
+    withPartyNumber?: boolean;
   }) =>
   async ({ page }: { page: Page }) => {
     const filename = getDapilFilename({ directory, dapil });
@@ -87,6 +88,9 @@ export const createDapilExtractor =
     const allRows = await rows.all();
     const allRowsWithoutHeader = allRows.slice(1);
 
+    const extractCandidateDetailsFromRow = createExtractCandidateDetailsFromRow(
+      { withPartyNumber },
+    );
     const candidates = await Promise.all(
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),
     );

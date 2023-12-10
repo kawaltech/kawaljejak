@@ -6,4 +6,4 @@ export type CandidateDetails = {
   address: string;
 };
 
-export type Candidate = { id: number } & CandidateDetails;
+export type Candidate = { partyNumber: number } & CandidateDetails;

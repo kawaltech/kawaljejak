@@ -16,11 +16,12 @@ dprd1.slice(0, 1).forEach((dapil) => {
     test.skip(`skipping ${filename}`, () => {});
   } else {
     test(
-      `fetching for ${getDapilFilename({ directory, dapil })}}`,
+      `${getDapilFilename({ directory, dapil })}}`,
       createDapilExtractor({
         dapil,
         directory,
         url: URLS.DPRD_1,
+        withPartyNumber: true,
       }),
     );
   }
