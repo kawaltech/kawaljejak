@@ -16,7 +16,7 @@ dprd2.forEach((dapil) => {
     test.skip(`skipping ${filename}`, () => {});
   } else {
     test(
-      `${getDapilFilename({ directory, dapil })}}`,
+      filename,
       createDapilExtractor({
         dapil,
         directory,
