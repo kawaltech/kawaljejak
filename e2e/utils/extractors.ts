@@ -82,7 +82,7 @@ export const findCandidateRowsForDapil = async ({
 
   if (withProvince) {
     await page
-      .getByRole("row", { name: dapil.name, exact: false })
+      .getByRole("row", { name: dapil.alias ?? dapil.name, exact: false })
       .first()
       .waitFor({ state: "visible", timeout: 60_000 });
   } else {
