@@ -12,7 +12,7 @@ test.describe.configure({ mode: "parallel" });
 const directory = DIRECTORIES.DPRD_2;
 const url = URLS.DPRD_2;
 
-dprd2.slice(1500, 1800).forEach(({ id, name }) => {
+dprd2.slice(1622, 1800).forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
     getDapilFilename({ directory, dapil: { id, name } }),
   );
