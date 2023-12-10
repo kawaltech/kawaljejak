@@ -77,7 +77,7 @@ export const findCandidateRowsForDapil = async ({
   await page.goto(url);
 
   await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
-  await page.getByRole("textbox", { name: /-- pilih/i }).click();
+  await page.getByRole("textbox", { name: /pilih/i }).click();
   await page.getByRole("option", { name: dapil.name, exact: true }).click();
 
   if (withProvince) {
