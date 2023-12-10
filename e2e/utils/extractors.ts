@@ -1,5 +1,9 @@
 import { expect, type Locator, type Page } from "@playwright/test";
-import type { Candidate, CandidateDetails } from "e2e/models/candidates";
+import type {
+  Candidate,
+  CandidateDetails,
+  CandidateWithProvince,
+} from "e2e/models/candidates";
 import type { Dapil } from "e2e/models/dapils";
 import { getPartyNumber } from "e2e/models/parties";
 import type { Directory, Url } from "./constants";
@@ -7,6 +11,21 @@ import { getCandidateFilename, getDapilFilename } from "./filenames";
 import { findFile, writeHTML, writeJSON } from "./fixtures";
 
 const trim = (text: string) => text.trim().replace(/\s+/g, " ");
+
+/**
+ * Parse candidate's inner texts into a candidate with province instead of party
+ * @param innerTexts candidate's inner texts
+ */
+const parseCandidateWithProvince = (
+  innerTexts: string[],
+): CandidateWithProvince => {
+  const [provinceWithPrefix, numberStr, , name, gender, address] = innerTexts;
+
+  const province = trim(provinceWithPrefix.substring("Nama Provinsi ".length));
+  const number = parseInt(numberStr.split("\n").pop() ?? "0");
+
+  return { province, number, name, gender, address };
+};
 
 /**
  * Parse candidate's inner texts into a candidate object
@@ -23,11 +42,15 @@ const parseCandidateDetails = (innerTexts: string[]): CandidateDetails => {
 };
 
 const createExtractCandidateDetailsFromRow =
-  ({ withPartyNumber = false }: { withPartyNumber?: boolean } = {}) =>
-  async (row: Locator): Promise<CandidateDetails | Candidate> => {
+  ({ withProvince = false }: { withProvince?: boolean } = {}) =>
+  async (row: Locator): Promise<Candidate | CandidateWithProvince> => {
     const cells = row.locator("td");
     const allInnerTexts = await cells.allInnerTexts();
-    const candidateDetails = parseCandidateDetails(allInnerTexts);
+
+    if (withProvince) {
+      const candidateWithProvince = parseCandidateWithProvince(allInnerTexts);
+      return candidateWithProvince;
+    }
 
     // FIXME: Somehow, the ID is not always available in the table
     // const idInput = await cells.last().locator("#id_calon_dpr");
@@ -35,32 +58,38 @@ const createExtractCandidateDetailsFromRow =
     // const candidate: Candidate = { id, ...candidateDetails };
     // console.debug(candidate);
 
-    if (withPartyNumber) {
-      const partyNumber = getPartyNumber(candidateDetails.party);
-      return { partyNumber, ...candidateDetails };
-    }
-
-    return candidateDetails;
+    const candidateDetails = parseCandidateDetails(allInnerTexts);
+    const partyNumber = getPartyNumber(candidateDetails.party);
+    return { partyNumber, ...candidateDetails };
   };
 
 export const findCandidateRowsForDapil = async ({
   page,
   url,
   dapil,
+  withProvince = false,
 }: {
   page: Page;
   url: Url;
   dapil: Dapil;
+  withProvince?: boolean;
 }) => {
   await page.goto(url);
 
   await expect(page).toHaveTitle("Portal Publikasi Pemilu dan Pemilihan");
-  await page.getByRole("textbox", { name: /pilih dapil/i }).click();
+  await page.getByRole("textbox", { name: /-- pilih/i }).click();
   await page.getByRole("option", { name: dapil.name, exact: true }).click();
 
-  await page
-    .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
-    .waitFor({ state: "hidden", timeout: 60_000 });
+  if (withProvince) {
+    await page
+      .getByRole("row", { name: dapil.name, exact: false })
+      .first()
+      .waitFor({ state: "visible", timeout: 60_000 });
+  } else {
+    await page
+      .getByRole("cell", { name: "Harap Pilih Dapil Terlebih" })
+      .waitFor({ state: "hidden", timeout: 60_000 });
+  }
 
   return page.locator("tr");
 };
@@ -70,12 +99,12 @@ export const createDapilExtractor =
     url,
     dapil,
     directory,
-    withPartyNumber = false,
+    withProvince = false,
   }: {
     url: Url;
     dapil: Dapil;
     directory: Directory;
-    withPartyNumber?: boolean;
+    withProvince?: boolean;
   }) =>
   async ({ page }: { page: Page }) => {
     const filename = getDapilFilename({ directory, dapil });
@@ -84,12 +113,17 @@ export const createDapilExtractor =
       return;
     }
 
-    const rows = await findCandidateRowsForDapil({ page, url, dapil });
+    const rows = await findCandidateRowsForDapil({
+      page,
+      url,
+      dapil,
+      withProvince,
+    });
     const allRows = await rows.all();
     const allRowsWithoutHeader = allRows.slice(1);
 
     const extractCandidateDetailsFromRow = createExtractCandidateDetailsFromRow(
-      { withPartyNumber },
+      { withProvince },
     );
     const candidates = await Promise.all(
       allRowsWithoutHeader.map(extractCandidateDetailsFromRow),

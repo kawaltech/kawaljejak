@@ -21,7 +21,6 @@ dprd2.forEach((dapil) => {
         dapil,
         directory,
         url,
-        withPartyNumber: true,
       }),
     );
   }

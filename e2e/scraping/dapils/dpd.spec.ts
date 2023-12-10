@@ -9,15 +9,14 @@ test.describe.configure({ mode: "parallel" });
 const directory = DIRECTORIES.DPD;
 const url = URLS.DPD;
 
-// TODO: Ensure the script works well for the first dapil before running it for all dapils
-dpd.slice(0, 0).forEach((dapil) => {
-  // FIXME: Ensure we have a proper data traversal for this
-  test.skip(
+dpd.forEach((dapil) => {
+  test(
     `fetching for ${getDapilFilename({ directory, dapil })}}`,
     createDapilExtractor({
       dapil,
       directory,
       url,
+      withProvince: true,
     }),
   );
 });
