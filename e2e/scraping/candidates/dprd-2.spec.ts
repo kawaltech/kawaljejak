@@ -5,14 +5,14 @@ import { DIRECTORIES, URLS } from "e2e/utils/constants";
 import { createCandidateDetailsExtractor } from "e2e/utils/extractors";
 import { getCandidateFilename, getDapilFilename } from "e2e/utils/filenames";
 import { findFile, readJSON, writeJSON } from "e2e/utils/fixtures";
-import dprd1 from "../../fixtures/dprd-1.json" assert { type: "json" };
+import dprd2 from "../../fixtures/dprd-2.json" assert { type: "json" };
 
 test.describe.configure({ mode: "parallel" });
 
-const directory = DIRECTORIES.DPRD_1;
-const url = URLS.DPRD_1;
+const directory = DIRECTORIES.DPRD_2;
+const url = URLS.DPRD_2;
 
-dprd1.slice(0, 1).forEach(({ id, name }) => {
+dprd2.slice(0, 1).forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
     getDapilFilename({ directory, dapil: { id, name } }),
   );
