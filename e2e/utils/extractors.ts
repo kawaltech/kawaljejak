@@ -109,34 +109,14 @@ export const createCandidateDetailsExtractor =
     directory,
     index,
     candidate,
-    retrying = true,
   }: {
     url: Url;
     dapil: Dapil;
     directory: Directory;
     index: number;
     candidate: CandidateDetails;
-    retrying?: boolean;
   }) =>
   async ({ page }: { page: Page }) => {
-    const filename = getCandidateFilename({ directory, dapil, candidate });
-    const closedCandidateFilename = getClosedCandidateFilename({
-      directory,
-      dapil,
-      candidate,
-    });
-
-    if (retrying) {
-      if (findFile(filename)) {
-        console.debug(`ℹ️ Retrying mode, skipping ${filename}.`);
-        return;
-      }
-      if (findFile(closedCandidateFilename)) {
-        console.debug(`ℹ️ Retrying mode, skipping ${closedCandidateFilename}.`);
-        return;
-      }
-    }
-
     const rows = await findCandidateRowsForDapil({
       page,
       url,
@@ -148,6 +128,11 @@ export const createCandidateDetailsExtractor =
       .locator("td")
       .last();
     if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
+      const closedCandidateFilename = getClosedCandidateFilename({
+        directory,
+        dapil,
+        candidate,
+      });
       console.debug(
         `❌ Candidate's profile is not open, storing ${closedCandidateFilename} instead.`,
       );
@@ -165,6 +150,7 @@ export const createCandidateDetailsExtractor =
 
     const html = await page.locator("[class='card']").innerHTML();
 
+    const filename = getCandidateFilename({ directory, dapil, candidate });
     console.debug(`✅ Writing to ${filename}`);
     await writeHTML(filename, html);
   };
