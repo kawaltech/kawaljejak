@@ -10,8 +10,7 @@ test.describe.configure({ mode: "parallel" });
 const directory = DIRECTORIES.DPRD_1;
 const url = URLS.DPRD_1;
 
-// TODO: Ensure the script works well for the first dapil before running it for all dapils
-dprd1.slice(0, 1).forEach((dapil) => {
+dprd1.forEach((dapil) => {
   const filename = getDapilFilename({ directory, dapil });
   if (findFile(filename)) {
     test.skip(`skipping ${filename}`, () => {});

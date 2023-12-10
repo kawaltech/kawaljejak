@@ -16,40 +16,38 @@ dprd1.slice(0, 1).forEach(({ id, name }) => {
   const dapil = readJSON<DapilWithCandidates>(
     getDapilFilename({ directory, dapil: { id, name } }),
   );
-  dapil.candidates
-    .slice(0, 100)
-    .forEach((candidate: CandidateDetails, index: number) => {
-      const filename = getCandidateFilename({ directory, dapil, candidate });
-      const closedCandidateFilename = getCandidateFilename({
-        directory,
-        dapil,
-        candidate,
-        extension: "json",
-      });
-
-      if (findFile(filename)) {
-        test.skip(`skipping ${filename}`, () => {});
-      } else if (findFile(closedCandidateFilename)) {
-        test(`skipping ${closedCandidateFilename}`, () => {
-          test.fail();
-        });
-      } else {
-        test(
-          `${getCandidateFilename({
-            directory,
-            dapil,
-            candidate,
-          })}`,
-          createCandidateDetailsExtractor({
-            dapil,
-            directory,
-            url,
-            index,
-            candidate,
-          }),
-        );
-      }
+  dapil.candidates.forEach((candidate: CandidateDetails, index: number) => {
+    const filename = getCandidateFilename({ directory, dapil, candidate });
+    const closedCandidateFilename = getCandidateFilename({
+      directory,
+      dapil,
+      candidate,
+      extension: "json",
     });
+
+    if (findFile(filename)) {
+      test.skip(`skipping ${filename}`, () => {});
+    } else if (findFile(closedCandidateFilename)) {
+      test(`skipping ${closedCandidateFilename}`, () => {
+        test.fail();
+      });
+    } else {
+      test(
+        `${getCandidateFilename({
+          directory,
+          dapil,
+          candidate,
+        })}`,
+        createCandidateDetailsExtractor({
+          dapil,
+          directory,
+          url,
+          index,
+          candidate,
+        }),
+      );
+    }
+  });
 });
 
 test.afterEach(async ({ page }, { title, status }) => {
