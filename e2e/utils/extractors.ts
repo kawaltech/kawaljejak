@@ -7,7 +7,11 @@ import type {
 import type { Dapil } from "e2e/models/dapils";
 import { getPartyNumber } from "e2e/models/parties";
 import type { Directory, Url } from "./constants";
-import { getCandidateFilename, getDapilFilename } from "./filenames";
+import {
+  getCandidateFilename,
+  getCandidateWithProvinceFilename,
+  getDapilFilename,
+} from "./filenames";
 import { findFile, writeHTML, writeJSON } from "./fixtures";
 
 const trim = (text: string) => text.trim().replace(/\s+/g, " ");
@@ -193,6 +197,64 @@ export const createCandidateDetailsExtractor =
     const html = await page.locator("[class='card']").innerHTML();
 
     const filename = getCandidateFilename({ directory, dapil, candidate });
+    console.debug(`✅ Writing to ${filename}`);
+    await writeHTML(filename, html);
+  };
+
+export const createCandidateWithProvinceExtractor =
+  ({
+    url,
+    dapil,
+    directory,
+    index,
+    candidate,
+  }: {
+    url: Url;
+    dapil: Dapil;
+    directory: Directory;
+    index: number;
+    candidate: CandidateWithProvince;
+  }) =>
+  async ({ page }: { page: Page }) => {
+    const rows = await findCandidateRowsForDapil({
+      page,
+      url,
+      dapil,
+    });
+
+    const action = rows
+      .nth(index + 1)
+      .locator("td")
+      .last();
+    if (await action.getByRole("link").isVisible({ timeout: 1000 })) {
+      const closedCandidateFilename = getCandidateWithProvinceFilename({
+        directory,
+        dapil,
+        candidate,
+        extension: "json",
+      });
+      console.debug(
+        `❌ Candidate's profile is not open, storing ${closedCandidateFilename} instead.`,
+      );
+      await writeJSON(closedCandidateFilename, { status: "failed" });
+      return;
+    }
+
+    await action.getByRole("button").click();
+    await expect(
+      page.getByRole("heading", { name: "PROFIL CALON" }),
+    ).toBeVisible();
+
+    const { name } = candidate;
+    await expect(page.getByRole("cell", { name })).toBeVisible();
+
+    const html = await page.locator("[class='card']").innerHTML();
+
+    const filename = getCandidateWithProvinceFilename({
+      directory,
+      dapil,
+      candidate,
+    });
     console.debug(`✅ Writing to ${filename}`);
     await writeHTML(filename, html);
   };

@@ -1,4 +1,4 @@
-import type { CandidateDetails } from "./candidates";
+import type { CandidateDetails, CandidateWithProvince } from "./candidates";
 
 export type Dapil = {
   readonly id: number;
@@ -8,4 +8,8 @@ export type Dapil = {
 
 export type DapilWithCandidates = Dapil & {
   readonly candidates: readonly CandidateDetails[];
+};
+
+export type DapilWithCandidatesWithProvince = Dapil & {
+  readonly candidates: readonly CandidateWithProvince[];
 };
